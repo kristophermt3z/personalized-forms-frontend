@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./Register.css";
+
 
 const Register: React.FC = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -15,8 +18,8 @@ const Register: React.FC = () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, form);
       setMessage(response.data.message);
+      navigate("/login");
     } catch (error: any) {
-      console.error("Error registering:", error);
       setMessage(error.response?.data?.message || "Registration failed.");
     }
   };
@@ -52,6 +55,9 @@ const Register: React.FC = () => {
         <button type="submit">Register</button>
       </form>
       {message && <p className="message">{message}</p>}
+      <p className="message">
+        Already have an account? <span onClick={() => navigate("/login")} className="link">Login</span>
+      </p>
     </div>
   );
 };

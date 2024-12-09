@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import FormsPage from "./pages/FormsPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import NavBar from "./components/NavBar";
 
 const App: React.FC = () => {
   return (
@@ -13,8 +14,17 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/forms" element={<ProtectedRoute><FormsPage /></ProtectedRoute>} />
-
+        <Route
+          path="/forms"
+          element={
+            <ProtectedRoute>
+              <>
+                <NavBar />
+                <FormsPage />
+              </>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

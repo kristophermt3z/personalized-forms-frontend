@@ -39,4 +39,15 @@
   button:hover {
     background-color: var(--button-hover-color);
   }
+
+  .link {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .link:hover {
+    color: #0056b3;
+  }
+  
   
