@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Register.css";
 
 const Register: React.FC = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -21,9 +22,9 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="register-container">
       <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="register-form">
         <input
           type="text"
           name="name"
@@ -50,7 +51,7 @@ const Register: React.FC = () => {
         />
         <button type="submit">Register</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
     </div>
   );
 };

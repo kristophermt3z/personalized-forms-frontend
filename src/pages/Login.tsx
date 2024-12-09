@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Login.css";
 
 const Login: React.FC = () => {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -13,7 +14,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, form);
-      localStorage.setItem("token", response.data.token); // Guardar el token en localStorage
+      localStorage.setItem("token", response.data.token);
       setMessage("Login successful!");
     } catch (error: any) {
       console.error("Error logging in:", error);
@@ -22,9 +23,9 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-form">
         <input
           type="email"
           name="email"
@@ -43,7 +44,7 @@ const Login: React.FC = () => {
         />
         <button type="submit">Login</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
     </div>
   );
 };
