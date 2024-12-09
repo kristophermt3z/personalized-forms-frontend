@@ -5,7 +5,7 @@
     box-sizing: border-box;
   }
   
-  /* Variables de colores */
+  /* Color variables */
   :root {
     --primary-color: #282c34;
     --secondary-color: #61dafb;
@@ -14,7 +14,7 @@
     --button-hover-color: #4caf50;
   }
   
-  /* Estilos globales */
+  /* Global styles */
   body {
     font-family: 'Roboto', Arial, sans-serif;
     background-color: var(--background-color);
