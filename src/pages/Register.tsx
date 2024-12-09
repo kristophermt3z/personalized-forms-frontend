@@ -1,28 +1,21 @@
 import React, { useState } from "react";
-import api from "../services/api";
+import axios from "axios";
 
 const Register: React.FC = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [message, setMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await api.post("/auth/register", form);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, form);
       setMessage(response.data.message);
     } catch (error: any) {
+      console.error("Error registering:", error);
       setMessage(error.response?.data?.message || "Registration failed.");
     }
   };

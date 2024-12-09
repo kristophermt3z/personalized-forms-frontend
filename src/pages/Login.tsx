@@ -1,28 +1,22 @@
 import React, { useState } from "react";
-import api from "../services/api";
+import axios from "axios";
 
 const Login: React.FC = () => {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-
+  const [form, setForm] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await api.post("/auth/login", form);
-      localStorage.setItem("token", response.data.token); // Guardar token en localStorage
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, form);
+      localStorage.setItem("token", response.data.token); // Guardar el token en localStorage
       setMessage("Login successful!");
     } catch (error: any) {
+      console.error("Error logging in:", error);
       setMessage(error.response?.data?.message || "Login failed.");
     }
   };
