@@ -13,7 +13,7 @@ const NavBar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="logo" onClick={() => navigate("/")}>
-        <h1>MyApp</h1>
+        <h1>Forms</h1>
       </div>
       <button className="logout-btn" onClick={handleLogout}>
         Logout
