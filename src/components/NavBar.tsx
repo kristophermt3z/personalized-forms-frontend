@@ -1,23 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import Button from "./Button";
 import "./styles/NavBar.css";
 
 const NavBar: React.FC = () => {
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
+    logout(); 
+    navigate("/login"); 
   };
 
   return (
     <nav className="navbar">
-      <div className="logo" onClick={() => navigate("/")}>
-        <h1>Forms</h1>
-      </div>
-      <button className="logout-btn" onClick={handleLogout}>
-        Logout
-      </button>
+      <h1>My Forms</h1>
+      <Button onClick={handleLogout} label="Logout" />
     </nav>
   );
 };

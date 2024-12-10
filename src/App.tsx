@@ -4,7 +4,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import FormsPage from "./pages/FormsPage";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import IsAuthenticated from "./routes/isAuthenticated";
 import NavBar from "./components/NavBar";
 
 const App: React.FC = () => {
@@ -12,8 +13,22 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/login"
+          element={
+            <IsAuthenticated>
+              <Login />
+            </IsAuthenticated>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <IsAuthenticated>
+              <Register />
+            </IsAuthenticated>
+          }
+        />
         <Route
           path="/forms"
           element={

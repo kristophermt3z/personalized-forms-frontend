@@ -1,9 +1,18 @@
-'use client';
+import React from "react";
+import "./styles/Button.css";
 
-export default function Name() {
-  return (
-    <div>
-      <h1>Client Component</h1>
-    </div>
-  );
+interface ButtonProps {
+  onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void;
+  label: string;
+  type?: "button" | "submit" | "reset";
 }
+
+const Button: React.FC<ButtonProps> = ({ onClick, label, type = "button" }) => {
+  return (
+    <button className="custom-btn" onClick={onClick} type={type}>
+      {label}
+    </button>
+  );
+};
+
+export default Button;
