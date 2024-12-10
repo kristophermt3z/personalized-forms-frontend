@@ -5,18 +5,27 @@ import Button from "./Button";
 import "./styles/NavBar.css";
 
 const NavBar: React.FC = () => {
-  const { logout } = useAuth();
+  const { logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout(); 
-    navigate("/login"); 
+    logout();
+    navigate("/login");
+  };
+
+  const handleHome = () => {
+    navigate("/");
   };
 
   return (
     <nav className="navbar">
-      <h1>My Forms</h1>
-      <Button onClick={handleLogout} label="Logout" />
+      {!isAuthenticated && <Button label="Home" onClick={handleHome} />}
+      {isAuthenticated && (
+        <>
+          <h1 className="navbar-title">My Forms</h1>
+          <Button onClick={handleLogout} label="Logout" />
+        </>
+      )}
     </nav>
   );
 };

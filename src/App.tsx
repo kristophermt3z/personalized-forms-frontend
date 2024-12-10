@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
@@ -17,7 +22,10 @@ const App: React.FC = () => {
           path="/login"
           element={
             <IsAuthenticated>
-              <Login />
+              <>
+                <NavBar />
+                <Login />
+              </>
             </IsAuthenticated>
           }
         />
@@ -25,7 +33,10 @@ const App: React.FC = () => {
           path="/register"
           element={
             <IsAuthenticated>
-              <Register />
+              <>
+                <NavBar />
+                <Register />
+              </>
             </IsAuthenticated>
           }
         />
