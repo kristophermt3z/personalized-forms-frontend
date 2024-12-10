@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ParticlesBackground from "../components/ParticlesBackground";
-import "./Home.css";
+import "./styles/Home.css";
 
 const Home: React.FC = () => {
   const [message, setMessage] = useState("Loading...");

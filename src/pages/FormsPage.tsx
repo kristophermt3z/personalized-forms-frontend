@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./FormsDashboard.css";
+import "./styles/FormsPage.css";
 
 interface Form {
   _id: string;
