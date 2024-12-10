@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../services/authService";
 import FormContainer from "../components/FormContainer";
+import ParticlesBackground from "../components/ParticlesBackground";
+import "./styles/Auth.css";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
@@ -23,15 +25,19 @@ const Register: React.FC = () => {
   };
 
   return (
-    <FormContainer
-      title="Register"
-      onSubmit={handleSubmit}
-      isRegister={true}
-      footerText="Already have an account?"
-      footerLinkText="Login"
-      footerLink="/login"
-    />
+    <div className="auth-container">
+      <ParticlesBackground />
+      <FormContainer
+        title="Register"
+        onSubmit={handleSubmit}
+        isRegister={true}
+        footerText="Already have an account?"
+        footerLinkText="Login"
+        footerLink="/login"
+      />
+    </div>
   );
 };
+
 
 export default Register;

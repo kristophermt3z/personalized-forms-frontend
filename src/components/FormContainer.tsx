@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import "./styles/FormContainer.css";
+import { Link } from "react-router-dom";
 
 interface FormContainerProps {
   title: string;
@@ -11,7 +12,14 @@ interface FormContainerProps {
   footerLink?: string;
 }
 
-const FormContainer: React.FC<FormContainerProps> = ({ title, onSubmit, isRegister, footerText, footerLinkText, footerLink }) => {
+const FormContainer: React.FC<FormContainerProps> = ({
+  title,
+  onSubmit,
+  isRegister,
+  footerText,
+  footerLinkText,
+  footerLink,
+}) => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +67,7 @@ const FormContainer: React.FC<FormContainerProps> = ({ title, onSubmit, isRegist
       </form>
       {footerText && footerLink && footerLinkText && (
         <p className="footer">
-          {footerText} <a href={footerLink}>{footerLinkText}</a>
+          {footerText} <Link to={footerLink}>{footerLinkText}</Link>
         </p>
       )}
     </div>
