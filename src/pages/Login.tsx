@@ -11,7 +11,7 @@ const Login: React.FC = () => {
   const handleSubmit = async ({ email, password }: { email: string; password: string }) => {
     try {
       const response = await loginUser(email, password);
-      login(response.data.token); // Actualiza el estado global
+      login(response.data.token);
       navigate("/forms");
     } catch (error) {
       console.error("Login failed:", error);
