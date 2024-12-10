@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import ParticlesBackground from "../components/ParticlesBackground";
 import "./Home.css";
 
 const Home: React.FC = () => {
@@ -23,11 +24,13 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-container">
-      <div className="message-container">
-        <h1 className="animated-message">{message}</h1>
+      <ParticlesBackground />
+      <div className="content">
+        <h1 className="title">{message}</h1>
         <button className="login-btn" onClick={() => navigate("/login")}>
-          Go to Login
+          Get Started
         </button>
+        <p className="footer">Created by Kristopher Martinez</p>
       </div>
     </div>
   );

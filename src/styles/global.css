@@ -25,20 +25,6 @@
     text-decoration: none;
     color: var(--secondary-color);
   }
-  
-  button {
-    background-color: var(--secondary-color);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: var(--button-hover-color);
-  }
 
   .link {
     color: #007bff;

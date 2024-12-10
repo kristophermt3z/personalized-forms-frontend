@@ -1,68 +1,56 @@
-/* Container with animated background */
 .home-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(-45deg, #4caf50, #81c784, #2196f3, #ff5722);
-    background-size: 400% 400%;
-    animation: gradient-animation 8s ease infinite;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-  }
-  
-  /* Text container for message */
-  .message-container {
-    text-align: center;
-  }
-  
-  /* Animated text message */
-  .animated-message {
-    font-size: 48px;
-    margin-bottom: 20px;
-    animation: fadeIn 3s infinite alternate;
-  }
-  
-  /* Button for login */
-  .login-btn {
-    background-color: #ffffff;
-    color: #4caf50;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .login-btn:hover {
-    background-color: #81c784;
-    color: white;
-    transform: scale(1.05);
-  }
-  
-  /* Gradient animation */
-  @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  /* Fade-in animation for text */
-  @keyframes fadeIn {
-    from {
-      opacity: 0.5;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: transparent; 
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+
+.content {
+  text-align: center;
+  z-index: 1; 
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #00000; 
+}
+
+.login-btn {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+  background-color: #ffffff;
+  color: black;
+  border: solid 1px black;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #00000;
+}
+
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+}
