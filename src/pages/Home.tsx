@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./styles/Home.css";
 import Button from "../components/Button";
+import { fetchHomeMessage } from "../services/homeService";
 
 const Home: React.FC = () => {
   const [message, setMessage] = useState("Loading...");
@@ -11,9 +11,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchHello = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/helloWorld`
-        );
+        const response = await fetchHomeMessage();
         setMessage(response.data.message);
       } catch (error) {
         console.error("Error fetching hello world:", error);
