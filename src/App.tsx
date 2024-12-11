@@ -8,7 +8,7 @@ import {
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import FormsPage from "./pages/FormsPage";
+import FormsPage from "./pages/FormsDashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import IsAuthenticated from "./routes/isAuthenticated";
 import NavBar from "./components/NavBar";

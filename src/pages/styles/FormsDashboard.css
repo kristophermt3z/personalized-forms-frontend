@@ -6,7 +6,7 @@
     border-radius: 8px;
   }
   
-  h2 {
+  .dashboard-container  h2 {
     margin-bottom: 20px;
     text-align: center;
     color: #333;
@@ -20,24 +20,6 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
-  }
-  
-  /* Create Form Button */
-  .create-form-btn {
-    display: block;
-    margin: 0 auto 20px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .create-form-btn:hover {
-    background-color: #45a049;
   }
   
   /* Forms List */

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./styles/FormsPage.css";
+import "./styles/FormsDashboard.css";
 
 interface Form {
   _id: string;
@@ -22,7 +22,7 @@ const FormsDashboard: React.FC = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         setForms(response.data);
-        setFilteredForms(response.data); // Inicializar los formularios filtrados
+        setFilteredForms(response.data);
       } catch (error) {
         console.error("Error fetching forms:", error);
       }
@@ -54,11 +54,6 @@ const FormsDashboard: React.FC = () => {
         onChange={handleSearch}
         className="search-bar"
       />
-
-      {/* Create Form Button */}
-      <button className="create-form-btn" onClick={() => alert("Navigate to create form page!")}>
-        Create New Form
-      </button>
 
       {/* Forms List */}
       <ul className="forms-list">

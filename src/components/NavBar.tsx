@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Button from "./Button";
 import "./styles/NavBar.css";
-import Logo from '../assets/logo.png';
+import Logo from "../assets/logo.png";
 
 const NavBar: React.FC = () => {
   const { logout, isAuthenticated } = useAuth();
@@ -18,13 +18,20 @@ const NavBar: React.FC = () => {
     navigate("/");
   };
 
+  const handleCreateForm = () => {
+    alert("Navigate to create form page!")
+  };
+
   return (
     <nav className="navbar">
       {!isAuthenticated && <Button label="Home" onClick={handleHome} />}
       {isAuthenticated && (
         <>
           <img src={Logo} alt="Logo" className="navbar-logo" />
-          <Button onClick={handleLogout} label="Logout" />
+          <div className="navbar-buttons">
+            <Button onClick={handleCreateForm} label="Create" />
+            <Button onClick={handleLogout} label="Logout" />
+          </div>
         </>
       )}
     </nav>
