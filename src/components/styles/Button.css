@@ -1,18 +1,16 @@
 .custom-btn {
-    background-color: #000000;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .custom-btn:hover {
-    background-color: #ffffff;
-    color: black;
-    border: solid 1px black;
-  }
-  
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+  background-color: #000000;
+  color: white;
+}
