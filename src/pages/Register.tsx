@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../services/authService";
 import FormContainer from "../components/FormContainer";
-import ParticlesBackground from "../components/ParticlesBackground";
 import "./styles/Auth.css";
 
 const Register: React.FC = () => {
@@ -26,7 +25,6 @@ const Register: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <ParticlesBackground />
       <FormContainer
         title="Register"
         onSubmit={handleSubmit}

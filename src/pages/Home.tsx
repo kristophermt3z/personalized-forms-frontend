@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import ParticlesBackground from "../components/ParticlesBackground";
 import "./styles/Home.css";
 import Button from "../components/Button";
 
@@ -31,7 +30,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-container">
-      <ParticlesBackground />
       <div className="content">
         <h1 className="title">{message}</h1>
         <Button onClick={handleLogin} label="Get Started" />

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
 import FormContainer from "../components/FormContainer";
 import { useAuth } from "../context/AuthContext";
-import ParticlesBackground from "../components/ParticlesBackground";
 import "./styles/Auth.css";
 
 
@@ -24,7 +23,6 @@ const Login: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <ParticlesBackground />
       <FormContainer
         title="Login"
         onSubmit={handleSubmit}

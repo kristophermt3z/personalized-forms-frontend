@@ -12,34 +12,40 @@ import FormsPage from "./pages/FormsPage";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import IsAuthenticated from "./routes/isAuthenticated";
 import NavBar from "./components/NavBar";
+import LayoutWithParticles from "./components/LayoutWithParticles";
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/login"
-          element={
-            <IsAuthenticated>
-              <>
-                <NavBar />
-                <Login />
-              </>
-            </IsAuthenticated>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <IsAuthenticated>
-              <>
-                <NavBar />
-                <Register />
-              </>
-            </IsAuthenticated>
-          }
-        />
+        {/* Layout with Particles */}
+        <Route element={<LayoutWithParticles />}>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/login"
+            element={
+              <IsAuthenticated>
+                <>
+                  <NavBar />
+                  <Login />
+                </>
+              </IsAuthenticated>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <IsAuthenticated>
+                <>
+                  <NavBar />
+                  <Register />
+                </>
+              </IsAuthenticated>
+            }
+          />
+        </Route>
+
+        {/* Routes without Particles */}
         <Route
           path="/forms"
           element={
