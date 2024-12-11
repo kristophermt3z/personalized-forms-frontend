@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Button from "./Button";
 import "./styles/NavBar.css";
+import Logo from '../assets/logo.png';
 
 const NavBar: React.FC = () => {
   const { logout, isAuthenticated } = useAuth();
@@ -22,7 +23,7 @@ const NavBar: React.FC = () => {
       {!isAuthenticated && <Button label="Home" onClick={handleHome} />}
       {isAuthenticated && (
         <>
-          <h1 className="navbar-title">My Forms</h1>
+          <img src={Logo} alt="Logo" className="navbar-logo" />
           <Button onClick={handleLogout} label="Logout" />
         </>
       )}
