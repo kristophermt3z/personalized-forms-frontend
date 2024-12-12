@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
 import FormContainer from "../components/FormContainer";
 import { useAuth } from "../context/AuthContext";
+import Popup from "../components/Popup";
 import "./styles/Auth.css";
 
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
+    const [popupMessage, setPopupMessage] = useState<string | null>(null);
 
   const handleSubmit = async ({ email, password }: { email: string; password: string }) => {
     try {
@@ -17,7 +19,7 @@ const Login: React.FC = () => {
       navigate("/forms");
     } catch (error) {
       console.error("Login failed:", error);
-      alert("Invalid credentials, please try again.");
+      setPopupMessage("Invalid credentials, please try again.");
     }
   };
 
@@ -30,6 +32,12 @@ const Login: React.FC = () => {
         footerLinkText="Register"
         footerLink="/register"
       />
+      {popupMessage && (
+        <Popup
+          message={popupMessage}
+          onClose={() => setPopupMessage(null)}
+        />
+      )}
     </div>
   );
 };

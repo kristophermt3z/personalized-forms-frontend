@@ -12,14 +12,14 @@ import FormsPage from "./pages/FormsDashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import IsAuthenticated from "./routes/isAuthenticated";
 import NavBar from "./components/NavBar";
-import LayoutWithParticles from "./components/LayoutWithParticles";
+import ParticlesBackgroundLayout from "./components/ParticlesBackgroundLayout";
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
         {/* Layout with Particles */}
-        <Route element={<LayoutWithParticles />}>
+        <Route element={<ParticlesBackgroundLayout />}>
           <Route path="/" element={<Home />} />
           <Route
             path="/login"
