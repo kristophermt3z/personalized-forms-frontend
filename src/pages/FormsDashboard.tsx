@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { fetchForms } from "../services/formsService";
+import GridForms from "../components/GridForms";
 import SearchBar from "../components/SearchBar";
-import Grid from "../components/Grid";
-import Card from "../components/Card";
+import { fetchForms } from "../services/formsService";
 import "./styles/FormsDashboard.css";
 
+interface Form {
+  _id: string;
+  title: string;
+  description: string;
+}
+
 const FormsDashboard: React.FC = () => {
-  const [forms, setForms] = useState([]);
+  const [forms, setForms] = useState<Form[]>([]);
+  const [filteredForms, setFilteredForms] = useState<Form[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredForms, setFilteredForms] = useState([]);
 
   useEffect(() => {
     const loadForms = async () => {
@@ -29,8 +34,9 @@ const FormsDashboard: React.FC = () => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
     const filtered = forms.filter(
-      (form:any) =>
-        form.title.toLowerCase().includes(query) || form.description.toLowerCase().includes(query)
+      (form) =>
+        form.title.toLowerCase().includes(query) ||
+        form.description.toLowerCase().includes(query)
     );
     setFilteredForms(filtered);
   };
@@ -39,17 +45,7 @@ const FormsDashboard: React.FC = () => {
     <div className="dashboard-container">
       <h2>Forms Dashboard</h2>
       <SearchBar value={searchQuery} onChange={handleSearch} />
-      <Grid>
-        {filteredForms.map((form:any) => (
-          <Card
-            key={form._id}
-            title={form.title}
-            description={form.description}
-            onEdit={() => alert(`Edit form ${form._id}`)}
-            onDelete={() => alert(`Delete form ${form._id}`)}
-          />
-        ))}
-      </Grid>
+      <GridForms forms={filteredForms} />
     </div>
   );
 };
