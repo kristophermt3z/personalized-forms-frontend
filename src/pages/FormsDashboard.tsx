@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { fetchForms } from "../services/formsService";
+import SearchBar from "../components/SearchBar";
+import Grid from "../components/Grid";
+import Card from "../components/Card";
 import "./styles/FormsDashboard.css";
 
-interface Form {
-  _id: string;
-  title: string;
-  description: string;
-}
-
 const FormsDashboard: React.FC = () => {
-  const [forms, setForms] = useState<Form[]>([]);
-  const [searchQuery, setSearchQuery] = useState(""); // Búsqueda de texto
-  const [filteredForms, setFilteredForms] = useState<Form[]>([]);
+  const [forms, setForms] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredForms, setFilteredForms] = useState([]);
 
-  // Fetch forms from the backend
   useEffect(() => {
-    const fetchForms = async () => {
+    const loadForms = async () => {
       try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/forms/get-forms`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const token = localStorage.getItem("token") || "";
+        const response = await fetchForms(token);
         setForms(response.data);
         setFilteredForms(response.data);
       } catch (error) {
@@ -28,15 +22,14 @@ const FormsDashboard: React.FC = () => {
       }
     };
 
-    fetchForms();
+    loadForms();
   }, []);
 
-  // Handle search query
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
     const filtered = forms.filter(
-      (form) =>
+      (form:any) =>
         form.title.toLowerCase().includes(query) || form.description.toLowerCase().includes(query)
     );
     setFilteredForms(filtered);
@@ -45,35 +38,18 @@ const FormsDashboard: React.FC = () => {
   return (
     <div className="dashboard-container">
       <h2>Forms Dashboard</h2>
-
-      {/* Search Bar */}
-      <input
-        type="text"
-        placeholder="Search forms..."
-        value={searchQuery}
-        onChange={handleSearch}
-        className="search-bar"
-      />
-
-      {/* Forms List */}
-      <ul className="forms-list">
-        {filteredForms.map((form) => (
-          <li key={form._id} className="form-item">
-            <div>
-              <h3>{form.title}</h3>
-              <p>{form.description}</p>
-            </div>
-            <div className="form-actions">
-              <button onClick={() => alert(`Edit form ${form._id}`)} className="edit-btn">
-                Edit
-              </button>
-              <button onClick={() => alert(`Delete form ${form._id}`)} className="delete-btn">
-                Delete
-              </button>
-            </div>
-          </li>
+      <SearchBar value={searchQuery} onChange={handleSearch} />
+      <Grid>
+        {filteredForms.map((form:any) => (
+          <Card
+            key={form._id}
+            title={form.title}
+            description={form.description}
+            onEdit={() => alert(`Edit form ${form._id}`)}
+            onDelete={() => alert(`Delete form ${form._id}`)}
+          />
         ))}
-      </ul>
+      </Grid>
     </div>
   );
 };
