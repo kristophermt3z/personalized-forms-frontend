@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../services/authService";
-import FormContainer from "../components/FormContainer";
+import AuthFormContainer from "../components/auth/AuthFormContainer";
 import Popup from "../components/Popup";
 import "./styles/Auth.css";
 
@@ -35,7 +35,7 @@ const Register: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <FormContainer
+      <AuthFormContainer
         title="Register"
         onSubmit={handleSubmit}
         isRegister={true}

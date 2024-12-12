@@ -2,7 +2,7 @@ import React from "react";
 import ParticlesBackground from "./ParticlesBackground";
 import { Outlet } from "react-router-dom";
 
-const LayoutWithParticles: React.FC = () => {
+const ParticlesBackgroundLayout: React.FC = () => {
   return (
     <>
       <ParticlesBackground />
@@ -11,4 +11,4 @@ const LayoutWithParticles: React.FC = () => {
   );
 };
 
-export default LayoutWithParticles;
+export default ParticlesBackgroundLayout;

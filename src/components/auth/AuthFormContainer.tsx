@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Button from "./Button";
-import "./styles/FormContainer.css";
+import Button from "../Button";
+import "./styles/AuthFormContainer.css";
 import { Link } from "react-router-dom";
 
-interface FormContainerProps {
+interface AuthFormContainerProps {
   title: string;
   onSubmit: (data: { name?: string; email: string; password: string }) => void;
   isRegister?: boolean;
@@ -12,7 +12,7 @@ interface FormContainerProps {
   footerLink?: string;
 }
 
-const FormContainer: React.FC<FormContainerProps> = ({
+const AuthFormContainer: React.FC<AuthFormContainerProps> = ({
   title,
   onSubmit,
   isRegister,
@@ -74,4 +74,4 @@ const FormContainer: React.FC<FormContainerProps> = ({
   );
 };
 
-export default FormContainer;
+export default AuthFormContainer;

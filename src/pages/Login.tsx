@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
-import FormContainer from "../components/FormContainer";
+import AuthFormContainer from "../components/auth/AuthFormContainer";
 import { useAuth } from "../context/AuthContext";
 import Popup from "../components/Popup";
 import "./styles/Auth.css";
@@ -25,7 +25,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <FormContainer
+      <AuthFormContainer
         title="Login"
         onSubmit={handleSubmit}
         footerText="Don't have an account?"

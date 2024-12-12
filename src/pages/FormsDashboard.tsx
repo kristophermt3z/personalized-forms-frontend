@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import GridForms from "../components/GridForms";
-import SearchBar from "../components/SearchBar";
+import GridForms from "../components/Forms/GridForms";
+import SearchBar from "../components/Forms/SearchBar";
 import { fetchForms } from "../services/formsService";
 import "./styles/FormsDashboard.css";
 
