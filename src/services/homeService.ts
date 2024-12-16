@@ -1,7 +1,5 @@
-import axios from "axios";
-
-const API_URL = process.env.REACT_APP_API_URL;
+import api from "./api";
 
 export const fetchHomeMessage = async () => {
-  return axios.get(`${API_URL}/helloWorld`);
+  return api.get("/helloWorld");
 };
