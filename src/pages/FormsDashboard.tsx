@@ -15,18 +15,18 @@ const FormsDashboard: React.FC = () => {
   const [filteredForms, setFilteredForms] = useState<Form[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const loadForms = async () => {
+    try {
+      const token = localStorage.getItem("token") || "";
+      const response = await fetchForms(token);
+      setForms(response.data);
+      setFilteredForms(response.data);
+    } catch (error) {
+      console.error("Error fetching forms:", error);
+    }
+  };
+  
   useEffect(() => {
-    const loadForms = async () => {
-      try {
-        const token = localStorage.getItem("token") || "";
-        const response = await fetchForms(token);
-        setForms(response.data);
-        setFilteredForms(response.data);
-      } catch (error) {
-        console.error("Error fetching forms:", error);
-      }
-    };
-
     loadForms();
   }, []);
 
@@ -45,7 +45,7 @@ const FormsDashboard: React.FC = () => {
     <div className="dashboard-container">
       <h2>Forms Dashboard</h2>
       <SearchBar value={searchQuery} onChange={handleSearch} />
-      <GridForms forms={filteredForms} />
+      <GridForms forms={filteredForms} onUpdate={loadForms} />
     </div>
   );
 };

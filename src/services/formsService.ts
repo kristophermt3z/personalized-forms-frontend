@@ -23,3 +23,9 @@ export const updateForm = async (formId: string, formData: object, token: string
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const deleteFormById = async (id: string, token: string) => {
+  return api.delete(`/forms/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
