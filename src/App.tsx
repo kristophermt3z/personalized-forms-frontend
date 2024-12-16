@@ -14,6 +14,7 @@ import IsAuthenticated from "./routes/isAuthenticated";
 import NavBar from "./components/NavBar";
 import ParticlesBackgroundLayout from "./components/ParticlesBackgroundLayout";
 import CreateFormPage from "./pages/dashboard/CreateFormPage";
+import EditFormPage from "./pages/dashboard/EditFormPage";
 
 const App: React.FC = () => {
   return (
@@ -69,6 +70,18 @@ const App: React.FC = () => {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/edit-form/:formId"
+          element={
+            <ProtectedRoute>
+              <>
+                <NavBar />
+                <EditFormPage />
+              </>
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>

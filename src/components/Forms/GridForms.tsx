@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import { useNavigate } from "react-router-dom";
 import "./styles/GridForms.css";
 
 interface Form {
@@ -13,6 +14,8 @@ interface GridFormsProps {
 }
 
 const GridForms: React.FC<GridFormsProps> = ({ forms }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="grid">
       {forms.map((form) => (
@@ -20,7 +23,7 @@ const GridForms: React.FC<GridFormsProps> = ({ forms }) => {
           key={form._id}
           title={form.title}
           description={form.description}
-          onEdit={() => alert(`Edit form ${form._id}`)}
+          onEdit={() => navigate(`/edit-form/${form._id}`)}
           onDelete={() => alert(`Delete form ${form._id}`)}
         />
       ))}
