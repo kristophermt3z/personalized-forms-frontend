@@ -20,7 +20,7 @@ const NavBar: React.FC = () => {
   };
 
   const handleCreateForm = () => {
-    setPopupMessage("Navigate to create form page!");
+    navigate("/create-form");
   };
 
   const handleLogout = () => {

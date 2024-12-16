@@ -13,6 +13,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import IsAuthenticated from "./routes/isAuthenticated";
 import NavBar from "./components/NavBar";
 import ParticlesBackgroundLayout from "./components/ParticlesBackgroundLayout";
+import CreateFormPage from "./pages/dashboard/CreateFormPage";
 
 const App: React.FC = () => {
   return (
@@ -53,6 +54,17 @@ const App: React.FC = () => {
               <>
                 <NavBar />
                 <FormsPage />
+              </>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/create-form"
+          element={
+            <ProtectedRoute>
+              <>
+                <NavBar />
+                <CreateFormPage />
               </>
             </ProtectedRoute>
           }

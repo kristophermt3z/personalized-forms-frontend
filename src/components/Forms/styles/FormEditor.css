@@ -1,0 +1,58 @@
+.form-editor-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-editor-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-fields select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-fields {
+    margin-top: 20px;
+  }
+  
+  .field-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .field-item input,
+  .field-item select {
+    flex: 1;
+  }
+  
+  .field-item label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .field-item button {
+    margin-left: 10px;
+  }
+  
