@@ -1,5 +1,6 @@
+import { jwtDecode } from "jwt-decode";
 import React, { useState } from "react";
-import Button from "../Button"; 
+import Button from "../Button";
 import "./styles/FormEditor.css";
 
 interface FormField {
@@ -13,7 +14,12 @@ interface FormEditorProps {
   initialTitle?: string;
   initialDescription?: string;
   initialFields?: FormField[];
-  onSubmit: (formData: { title: string; description: string; fields: FormField[]; authorId: string }) => void;
+  onSubmit: (formData: {
+    title: string;
+    description: string;
+    fields: FormField[];
+    authorId: string;
+  }) => void;
 }
 
 const FormEditor: React.FC<FormEditorProps> = ({
@@ -27,10 +33,17 @@ const FormEditor: React.FC<FormEditorProps> = ({
   const [fields, setFields] = useState<FormField[]>(initialFields);
 
   const addField = () => {
-    setFields([...fields, { id: Date.now().toString(), type: "text", label: "", required: false }]);
+    setFields([
+      ...fields,
+      { id: Date.now().toString(), type: "text", label: "", required: false },
+    ]);
   };
 
-  const updateField = (index: number, key: keyof FormField, value: string | boolean) => {
+  const updateField = (
+    index: number,
+    key: keyof FormField,
+    value: string | boolean
+  ) => {
     const updatedFields = [...fields];
     updatedFields[index] = { ...updatedFields[index], [key]: value };
     setFields(updatedFields);
@@ -43,9 +56,20 @@ const FormEditor: React.FC<FormEditorProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ title, description, fields, authorId: "1" });
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.error("No token found.");
+      return;
+    }
+
+    try {
+      const decoded: { id: string } = jwtDecode(token); // Extract `authorId` from token
+      onSubmit({ title, description, fields, authorId: decoded.id });
+    } catch (err) {
+      console.error("Error decoding token:", err);
+    }
   };
-  
 
   return (
     <div className="form-editor-container">
@@ -95,7 +119,9 @@ const FormEditor: React.FC<FormEditorProps> = ({
                 <input
                   type="checkbox"
                   checked={field.required}
-                  onChange={(e) => updateField(index, "required", e.target.checked)}
+                  onChange={(e) =>
+                    updateField(index, "required", e.target.checked)
+                  }
                 />
               </label>
               <Button label="Remove" onClick={() => removeField(index)} />
@@ -104,7 +130,10 @@ const FormEditor: React.FC<FormEditorProps> = ({
           <Button label="Add Field" onClick={addField} />
         </div>
 
-        <Button label="Save Form" onClick={() => document.forms[0].requestSubmit()} />
+        <Button
+          label="Save Form"
+          onClick={() => document.forms[0].requestSubmit()}
+        />
       </form>
     </div>
   );
