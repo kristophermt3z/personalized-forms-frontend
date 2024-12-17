@@ -127,13 +127,15 @@ const FormEditor: React.FC<FormEditorProps> = ({
               <Button label="Remove" onClick={() => removeField(index)} />
             </div>
           ))}
-          <Button label="Add Field" onClick={addField} />
         </div>
 
-        <Button
-          label="Save Form"
-          onClick={() => document.forms[0].requestSubmit()}
-        />
+        <div className="form-actions">
+          <Button label="Add Field" onClick={addField} />
+          <Button
+            label="Save Form"
+            onClick={() => document.forms[0].requestSubmit()}
+          />
+        </div>
       </form>
     </div>
   );
