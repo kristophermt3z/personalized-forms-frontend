@@ -32,6 +32,8 @@
 
 .form-fields {
   margin-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px black;
 }
 
 .form-fields h3 {
