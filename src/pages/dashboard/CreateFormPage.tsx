@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import FormEditor from "../../components/Forms/FormEditor";
 import { createForm } from "../../services/formsService";
 import Popup from "../../components/Popup";
+import './styles/Create-EditeFromPage.css';
 
 const CreateFormPage: React.FC = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const CreateFormPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="create-edit-from-page">
       <FormEditor onSubmit={handleSubmit} />
       {popupMessage && (
         <Popup message={popupMessage} onClose={() => setPopupMessage(null)} />

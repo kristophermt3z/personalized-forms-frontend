@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import FormEditor from "../../components/Forms/FormEditor";
 import { fetchFormById, updateForm } from "../../services/formsService";
 import Popup from "../../components/Popup";
+import './styles/Create-EditeFromPage.css';
+
 
 interface FormField {
   id: string;
@@ -62,7 +64,7 @@ const EditFormPage: React.FC = () => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="create-edit-from-page">
       <FormEditor
         key={formId}
         initialTitle={formTitle}
