@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
 import FormsPage from "./pages/FormsDashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import IsAuthenticated from "./routes/isAuthenticated";
@@ -22,7 +21,6 @@ const App: React.FC = () => {
       <Routes>
         {/* Layout with Particles */}
         <Route element={<ParticlesBackgroundLayout />}>
-          <Route path="/" element={<Home />} />
           <Route
             path="/login"
             element={
@@ -49,14 +47,12 @@ const App: React.FC = () => {
 
         {/* Routes without Particles */}
         <Route
-          path="/forms"
+          path="/"
           element={
-            <ProtectedRoute>
-              <>
-                <NavBar />
-                <FormsPage />
-              </>
-            </ProtectedRoute>
+            <>
+              <NavBar />
+              <FormsPage />
+            </>
           }
         />
         <Route

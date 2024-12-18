@@ -17,8 +17,7 @@ const FormsDashboard: React.FC = () => {
 
   const loadForms = async () => {
     try {
-      const token = localStorage.getItem("token") || "";
-      const response = await fetchForms(token);
+      const response = await fetchForms();
       setForms(response.data);
       setFilteredForms(response.data);
     } catch (error) {

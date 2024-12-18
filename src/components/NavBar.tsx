@@ -15,10 +15,6 @@ const NavBar: React.FC = () => {
     navigate("/");
   };
 
-  const handleDashboard = () => {
-    navigate("/forms");
-  };
-
   const handleCreateForm = () => {
     navigate("/create-form");
   };
@@ -28,17 +24,34 @@ const NavBar: React.FC = () => {
     navigate("/login");
   };
 
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <>
       <nav className="navbar">
-        {!isAuthenticated && <Button label="Home" onClick={handleHome} />}
+        {!isAuthenticated && (
+          <>
+          <img
+              src={Logo}
+              alt="Logo"
+              className="navbar-logo"
+              onClick={handleHome}
+            />
+            <div className="navbar-buttons">
+              <Button label="Home" onClick={handleHome} />
+              <Button onClick={handleLogin} label="Login" />
+            </div>
+          </>
+        )}
         {isAuthenticated && (
           <>
             <img
               src={Logo}
               alt="Logo"
               className="navbar-logo"
-              onClick={handleDashboard}
+              onClick={handleHome}
             />
             <div className="navbar-buttons">
               <Button onClick={handleCreateForm} label="Create" />

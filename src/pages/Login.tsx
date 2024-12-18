@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     try {
       const response = await loginUser(email, password);
       login(response.data.token);
-      navigate("/forms");
+      navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
       setPopupMessage("Invalid credentials, please try again.");

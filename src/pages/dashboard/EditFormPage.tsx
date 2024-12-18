@@ -52,7 +52,7 @@ const EditFormPage: React.FC = () => {
       const token = localStorage.getItem("token") || "";
       await updateForm(formId || "", formData, token);
       setPopupMessage("Form updated successfully!");
-      setTimeout(() => navigate("/forms"), 2000); // Redirect after success
+      setTimeout(() => navigate("/"), 2000); // Redirect after success
     } catch (error) {
       console.error("Error updating form:", error);
       setPopupMessage("Failed to update form. Please try again.");

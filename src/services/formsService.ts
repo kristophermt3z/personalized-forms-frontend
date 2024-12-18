@@ -1,9 +1,7 @@
 import api from "./api";
 
-export const fetchForms = async (token: string) => {
-  return api.get("/forms/get-forms", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+export const fetchForms = async () => {
+  return api.get("/forms/get-forms");
 };
 
 export const fetchFormById = async (formId: string, token: string) => {
