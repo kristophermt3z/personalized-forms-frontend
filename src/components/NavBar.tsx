@@ -40,7 +40,6 @@ const NavBar: React.FC = () => {
               onClick={handleHome}
             />
             <div className="navbar-buttons">
-              <Button label="Home" onClick={handleHome} />
               <Button onClick={handleLogin} label="Login" />
             </div>
           </>
