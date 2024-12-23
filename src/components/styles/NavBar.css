@@ -1,22 +1,85 @@
+/* NavBar container */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fffff;
+  background-color: transparent;
   padding: 10px 20px;
-  color: white;
+  color: black;
+  position: relative;
 }
 
+/* Logo */
 .navbar-logo {
   height: 40px;
   cursor: pointer;
 }
 
-.navbar-title {
-  color: black;
+/* Navbar links (desktop) */
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
 }
 
-.navbar-buttons {
+.navbar-links li {
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-links li:hover {
+  border-radius: 4px;
+  text-decoration: underline;
+}
+
+/* Menu toggle button (mobile) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: black;
+  cursor: pointer;
+}
+
+/* Mobile dropdown menu */
+.navbar-links.open {
+  color: black;
   display: flex;
-  gap: 5px;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-links.open li {
+  margin-bottom: 10px;
+}
+
+.navbar-links.open li:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #282c34;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }
