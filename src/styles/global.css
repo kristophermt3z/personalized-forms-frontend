@@ -21,10 +21,10 @@ body {
   /* background: url("../assets/background.jpg") no-repeat center bottom fixed;
   background-size: cover; */
   background-color: #ffffff;
-  background-image: radial-gradient(#9c9c9c 2px, transparent 2px),
+  /* background-image: radial-gradient(#9c9c9c 2px, transparent 2px),
     radial-gradient(#9c9c9c 2px, #ffffff 2px);
   background-size: 80px 80px;
-  background-position: 0 0, 40px 40px;
+  background-position: 0 0, 40px 40px; */
   color: var(--text-color);
   height: 100vh;
   width: 100%;

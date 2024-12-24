@@ -54,53 +54,51 @@ const App: React.FC = () => {
               </>
             }
           />
+          <Route
+            path="/"
+            element={
+              <>
+                <NavBar />
+                <FormsPage />
+              </>
+            }
+          />
+          <Route
+            path="/profile-forms"
+            element={
+              <ProtectedRoute>
+                <>
+                  <NavBar />
+                  <ProfileForms />
+                </>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/create-form"
+            element={
+              <ProtectedRoute>
+                <>
+                  <NavBar />
+                  <CreateFormPage />
+                </>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-form/:formId"
+            element={
+              <ProtectedRoute>
+                <>
+                  <NavBar />
+                  <EditFormPage />
+                </>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
-
-        {/* Routes without Particles */}
-        <Route
-          path="/"
-          element={
-            <>
-              <NavBar />
-              <FormsPage />
-            </>
-          }
-        />
-        <Route
-          path="/profile-forms"
-          element={
-            <ProtectedRoute>
-              <>
-                <NavBar />
-                <ProfileForms />
-              </>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/create-form"
-          element={
-            <ProtectedRoute>
-              <>
-                <NavBar />
-                <CreateFormPage />
-              </>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/edit-form/:formId"
-          element={
-            <ProtectedRoute>
-              <>
-                <NavBar />
-                <EditFormPage />
-              </>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
