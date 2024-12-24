@@ -28,6 +28,11 @@ const NavBar: React.FC = () => {
     setMenuOpen(false);
   };
 
+  const handleProfileForms = () => {
+    navigate("/profile-forms");
+    setMenuOpen(false);
+  };
+
   const handleLogout = () => {
     logout();
     navigate("/login");
@@ -55,7 +60,7 @@ const NavBar: React.FC = () => {
         {isAuthenticated && (
           <>
             <li onClick={handleHome}>Admin</li>
-            <li onClick={handleHome}>My Forms</li>
+            <li onClick={handleProfileForms}>My Forms</li>
             <li onClick={handleCreateForm}>Create</li>
             <li onClick={handleContact}>Contact</li>
             <li onClick={handleLogout}>Logout</li>

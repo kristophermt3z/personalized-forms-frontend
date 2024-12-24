@@ -15,6 +15,7 @@ import ParticlesBackgroundLayout from "./components/ParticlesBackgroundLayout";
 import CreateFormPage from "./pages/dashboard/CreateFormPage";
 import EditFormPage from "./pages/dashboard/EditFormPage";
 import Contact from "./pages/Contact";
+import ProfileForms from "./pages/dashboard/ProfileForms";
 
 const App: React.FC = () => {
   return (
@@ -47,10 +48,10 @@ const App: React.FC = () => {
           <Route
             path="/contact"
             element={
-                <>
-                  <NavBar />
-                  <Contact />
-                </>
+              <>
+                <NavBar />
+                <Contact />
+              </>
             }
           />
         </Route>
@@ -63,6 +64,17 @@ const App: React.FC = () => {
               <NavBar />
               <FormsPage />
             </>
+          }
+        />
+        <Route
+          path="/profile-forms"
+          element={
+            <ProtectedRoute>
+              <>
+                <NavBar />
+                <ProfileForms />
+              </>
+            </ProtectedRoute>
           }
         />
         <Route

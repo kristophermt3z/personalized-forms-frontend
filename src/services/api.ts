@@ -8,7 +8,6 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const { tokenExpired } = error.response?.data;
-    console.log("auth");
     if (tokenExpired) {
       localStorage.removeItem("token");
       window.location.href = "/login";

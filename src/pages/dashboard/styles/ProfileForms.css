@@ -1,0 +1,14 @@
+.dashboard-container {
+    max-width: 95%;
+    margin: 30px auto;
+    padding: 20px;
+    background: transparent;
+    border-radius: 8px;
+  }
+  
+  .dashboard-container  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
