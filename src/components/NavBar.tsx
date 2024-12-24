@@ -54,6 +54,7 @@ const NavBar: React.FC = () => {
         )}
         {isAuthenticated && (
           <>
+            <li onClick={handleHome}>Admin</li>
             <li onClick={handleHome}>My Forms</li>
             <li onClick={handleCreateForm}>Create</li>
             <li onClick={handleContact}>Contact</li>
