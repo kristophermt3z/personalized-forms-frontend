@@ -26,3 +26,21 @@
   font-size: 14px;
   color: #00000;
 }
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  fill: #555;
+  transition: fill 0.3s ease;
+}
+
+.icon:hover {
+  fill: black;
+}
