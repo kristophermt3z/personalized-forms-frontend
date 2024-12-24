@@ -18,6 +18,11 @@ const NavBar: React.FC = () => {
     setMenuOpen(false);
   };
 
+  const handleContact = () => {
+    navigate("/contact");
+    setMenuOpen(false);
+  };
+
   const handleCreateForm = () => {
     navigate("/create-form");
     setMenuOpen(false);
@@ -44,11 +49,14 @@ const NavBar: React.FC = () => {
         {!isAuthenticated && (
           <>
             <li onClick={handleLogin}>Login</li>
+            <li onClick={handleContact}>Contact</li>
           </>
         )}
         {isAuthenticated && (
           <>
+            <li onClick={handleHome}>My Forms</li>
             <li onClick={handleCreateForm}>Create</li>
+            <li onClick={handleContact}>Contact</li>
             <li onClick={handleLogout}>Logout</li>
           </>
         )}

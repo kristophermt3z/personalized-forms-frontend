@@ -18,7 +18,7 @@
 /* Global styles */
 body {
   font-family: "Roboto", Arial, sans-serif;
-  background: url("../assets/background.jpg") no-repeat center center fixed;
+  background: url("../assets/background.jpg") no-repeat center bottom fixed;
   background-size: cover;
   color: var(--text-color);
   height: 100vh;

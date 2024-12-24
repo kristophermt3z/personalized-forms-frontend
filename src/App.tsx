@@ -14,6 +14,7 @@ import NavBar from "./components/NavBar";
 import ParticlesBackgroundLayout from "./components/ParticlesBackgroundLayout";
 import CreateFormPage from "./pages/dashboard/CreateFormPage";
 import EditFormPage from "./pages/dashboard/EditFormPage";
+import Contact from "./pages/Contact";
 
 const App: React.FC = () => {
   return (
@@ -41,6 +42,15 @@ const App: React.FC = () => {
                   <Register />
                 </>
               </IsAuthenticated>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+                <>
+                  <NavBar />
+                  <Contact />
+                </>
             }
           />
         </Route>
@@ -78,7 +88,7 @@ const App: React.FC = () => {
           }
         />
 
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
