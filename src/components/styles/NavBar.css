@@ -7,6 +7,7 @@
   padding: 10px 20px;
   color: black;
   position: relative;
+  z-index: 5;
 }
 
 /* Logo */
@@ -55,6 +56,8 @@
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .navbar-links.open li {
@@ -77,6 +80,8 @@
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    pointer-events: auto;
   }
 
   .menu-toggle {
