@@ -20,6 +20,23 @@ body {
   font-family: "Roboto", Arial, sans-serif;
   background: url("../assets/background.jpg") no-repeat center bottom fixed;
   background-size: cover;
+  /* background: rgb(152, 152, 152);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(152, 152, 152, 1) 0%,
+    rgba(255, 255, 255, 1) 30%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(152, 152, 152, 1) 0%,
+    rgba(255, 255, 255, 1) 30%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(152, 152, 152, 1) 0%,
+    rgba(255, 255, 255, 1) 30%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#989898",endColorstr="#ffffff",GradientType=1); */
   color: var(--text-color);
   height: 100vh;
   width: 100%;
