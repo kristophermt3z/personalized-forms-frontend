@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
             <GitHubIcon className="icon" />
           </a>
           <a
-            href="https://salvadormartin3z.netlify.app/"
+            href="https://kristophermt3z.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
