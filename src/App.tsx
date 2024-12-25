@@ -17,6 +17,7 @@ import EditFormPage from "./pages/dashboard/EditFormPage";
 import Contact from "./pages/Contact";
 import ProfileForms from "./pages/dashboard/ProfileForms";
 import AdminPanel from "./pages/dashboard/AdminPanelPage";
+import IsAdmin from "./routes/isAdmin";
 
 const App: React.FC = () => {
   return (
@@ -100,10 +101,10 @@ const App: React.FC = () => {
           <Route
             path="/admin"
             element={
-              <IsAuthenticated>
+              <IsAdmin>
                 <NavBar />
                 <AdminPanel />
-              </IsAuthenticated>
+              </IsAdmin>
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
