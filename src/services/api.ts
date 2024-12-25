@@ -7,10 +7,13 @@ const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    const { tokenExpired } = error.response?.data;
+    const { tokenExpired , isNotAdmin } = error.response?.data;
     if (tokenExpired) {
       localStorage.removeItem("token");
       window.location.href = "/login";
+    }
+    if (isNotAdmin) {
+      window.location.href = "/";
     }
 
     return Promise.reject(error);

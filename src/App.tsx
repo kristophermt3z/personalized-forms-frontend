@@ -8,8 +8,8 @@ import {
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import FormsPage from "./pages/FormsDashboard";
-import ProtectedRoute from "./routes/ProtectedRoute";
 import IsAuthenticated from "./routes/isAuthenticated";
+import IsNotAuthenticated from "./routes/isNotAuthenticated";
 import NavBar from "./components/NavBar";
 import ParticlesBackgroundLayout from "./components/ParticlesBackgroundLayout";
 import CreateFormPage from "./pages/dashboard/CreateFormPage";
@@ -27,23 +27,23 @@ const App: React.FC = () => {
           <Route
             path="/login"
             element={
-              <IsAuthenticated>
+              <IsNotAuthenticated>
                 <>
                   <NavBar />
                   <Login />
                 </>
-              </IsAuthenticated>
+              </IsNotAuthenticated>
             }
           />
           <Route
             path="/register"
             element={
-              <IsAuthenticated>
+              <IsNotAuthenticated>
                 <>
                   <NavBar />
                   <Register />
                 </>
-              </IsAuthenticated>
+              </IsNotAuthenticated>
             }
           />
           <Route
@@ -67,43 +67,43 @@ const App: React.FC = () => {
           <Route
             path="/profile-forms"
             element={
-              <ProtectedRoute>
+              <IsAuthenticated>
                 <>
                   <NavBar />
                   <ProfileForms />
                 </>
-              </ProtectedRoute>
+              </IsAuthenticated>
             }
           />
           <Route
             path="/create-form"
             element={
-              <ProtectedRoute>
+              <IsAuthenticated>
                 <>
                   <NavBar />
                   <CreateFormPage />
                 </>
-              </ProtectedRoute>
+              </IsAuthenticated>
             }
           />
           <Route
             path="/edit-form/:formId"
             element={
-              <ProtectedRoute>
+              <IsAuthenticated>
                 <>
                   <NavBar />
                   <EditFormPage />
                 </>
-              </ProtectedRoute>
+              </IsAuthenticated>
             }
           />
           <Route
             path="/admin"
             element={
-              <ProtectedRoute>
+              <IsAuthenticated>
                 <NavBar />
                 <AdminPanel />
-              </ProtectedRoute>
+              </IsAuthenticated>
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
