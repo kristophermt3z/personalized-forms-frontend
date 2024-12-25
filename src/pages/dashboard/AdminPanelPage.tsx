@@ -101,8 +101,14 @@ const AdminPanel: React.FC = () => {
         <tbody>
           {users.map((user) => (
             <tr key={user._id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
+              <td className="name-cell" data-name={user.name}>
+                {user.name}
+              </td>
+
+              <td className="email-cell" data-email={user.email}>
+                {user.email}
+              </td>
+
               <td>{user.admin ? "Yes" : "No"}</td>
               <td>{user.active ? "Yes" : "No"}</td>
               <td>

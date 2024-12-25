@@ -1,75 +1,133 @@
 .admin-panel-container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .admin-panel-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333333;
-  }
-  
-  .admin-panel-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .admin-panel-table th,
-  .admin-panel-table td {
-    border: 1px solid #dddddd;
-    text-align: left;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Ensures horizontal scrolling on smaller screens */
+}
+
+.admin-panel-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.admin-panel-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-panel-table th,
+.admin-panel-table td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 10px;
+  white-space: nowrap; /* Prevents text wrapping in cells */
+}
+
+.admin-panel-table th {
+  background-color: #f4f4f4;
+  color: #333333;
+}
+
+.admin-panel-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.admin-panel-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Name and Email column */
+.admin-panel-table td.name-cell,
+.admin-panel-table td.email-cell {
+  position: relative;
+  max-width: 250px; /* Limit the visible width */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+/* Tooltip styling for Name and Email */
+.admin-panel-table td.name-cell:hover::after,
+.admin-panel-table td.email-cell:hover::after {
+  content: attr(data-name); /* Displays full name on hover */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+  min-width: 111px; /* Ensures consistent button width */
+  text-align: center; /* Centers the text inside the button */
+}
+
+.toggle-admin-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.toggle-admin-btn:hover {
+  background-color: #0056b3;
+}
+
+.toggle-active-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.toggle-active-btn:hover {
+  background-color: #218838;
+}
+
+.delete-user-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-user-btn:hover {
+  background-color: #bd2130;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-panel-container {
     padding: 10px;
   }
-  
-  .admin-panel-table th {
-    background-color: #f4f4f4;
-    color: #333333;
+
+  .admin-panel-table {
+    width: 90%; /* Table takes up 90% width */
+    margin: 0 auto; /* Centers the table */
   }
-  
-  .admin-panel-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+
+  .admin-panel-table th,
+  .admin-panel-table td {
+    padding: 8px;
   }
-  
-  .admin-panel-table tr:hover {
-    background-color: #f1f1f1;
+
+  .admin-panel-table td.name-cell,
+  .admin-panel-table td.email-cell {
+    max-width: 100px; /* Adjusted max width for smaller screens */
   }
-  
+
   button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-bottom: 5px; /* Adds spacing between buttons vertically */
+    min-width: 111px;
   }
-  
-  .toggle-admin-btn {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .toggle-admin-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .toggle-active-btn {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .toggle-active-btn:hover {
-    background-color: #218838;
-  }
-  
-  .delete-user-btn {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .delete-user-btn:hover {
-    background-color: #bd2130;
-  }
-  
+}
