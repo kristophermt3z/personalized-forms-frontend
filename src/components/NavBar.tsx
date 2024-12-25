@@ -5,7 +5,7 @@ import Logo from "../assets/logo.png";
 import "./styles/NavBar.css";
 
 const NavBar: React.FC = () => {
-  const { logout, isAuthenticated } = useAuth();
+  const { logout, isAuthenticated, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -15,6 +15,11 @@ const NavBar: React.FC = () => {
 
   const handleHome = () => {
     navigate("/");
+    setMenuOpen(false);
+  };
+
+  const handleAdmin = () => {
+    navigate("/admin");
     setMenuOpen(false);
   };
 
@@ -53,13 +58,15 @@ const NavBar: React.FC = () => {
       <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
         {!isAuthenticated && (
           <>
+            <li onClick={handleHome}>Home</li>
             <li onClick={handleLogin}>Login</li>
             <li onClick={handleContact}>Contact</li>
           </>
         )}
         {isAuthenticated && (
           <>
-            <li onClick={handleHome}>Admin</li>
+            <li onClick={handleHome}>Home</li>
+            {isAdmin && <li onClick={handleAdmin}>Admin Panel</li>}
             <li onClick={handleProfileForms}>My Forms</li>
             <li onClick={handleCreateForm}>Create</li>
             <li onClick={handleContact}>Contact</li>

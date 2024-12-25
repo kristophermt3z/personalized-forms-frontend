@@ -16,6 +16,7 @@ import CreateFormPage from "./pages/dashboard/CreateFormPage";
 import EditFormPage from "./pages/dashboard/EditFormPage";
 import Contact from "./pages/Contact";
 import ProfileForms from "./pages/dashboard/ProfileForms";
+import AdminPanel from "./pages/dashboard/AdminPanelPage";
 
 const App: React.FC = () => {
   return (
@@ -96,7 +97,15 @@ const App: React.FC = () => {
               </ProtectedRoute>
             }
           />
-
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <NavBar />
+                <AdminPanel />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
