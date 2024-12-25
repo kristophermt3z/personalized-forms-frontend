@@ -1,11 +1,12 @@
-import { jwtDecode } from "jwt-decode";
 import React, { createContext, useState, useEffect, useContext } from "react";
+import { getCurrentUser } from "../services/authService";
 
 interface AuthContextProps {
   isAuthenticated: boolean;
   isAdmin: boolean;
   login: (token: string) => void;
   logout: () => void;
+  refreshAuthState: () => void;
 }
 
 const AuthContext = createContext<AuthContextProps>({
@@ -13,27 +14,25 @@ const AuthContext = createContext<AuthContextProps>({
   isAdmin: false,
   login: () => {},
   logout: () => {},
+  refreshAuthState: () => {},
 });
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   useEffect(() => {
-    // Check for token in localStorage on mount
     const token = localStorage.getItem("token");
     if (token) {
-      const decoded: { admin: boolean } = jwtDecode(token);
-      setIsAuthenticated(true);
-      setIsAdmin(decoded.admin);
+      refreshAuthState();
     }
-  }, []);
+  });
 
   const login = (token: string) => {
     localStorage.setItem("token", token);
-    const decoded: { admin: boolean } = jwtDecode(token);
-    setIsAuthenticated(true);
-    setIsAdmin(decoded.admin);
+    refreshAuthState();
   };
 
   const logout = () => {
@@ -42,8 +41,27 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsAdmin(false);
   };
 
+  const refreshAuthState = async () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const token = localStorage.getItem("token") || "";
+      const response = await getCurrentUser(token);
+      const user = await response.data;
+
+      setIsAuthenticated(user.active);
+      setIsAdmin(user.admin);
+
+      if (!user.active) {
+        logout();
+        window.location.reload();
+      }
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, isAdmin, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, isAdmin, login, logout, refreshAuthState }}
+    >
       {children}
     </AuthContext.Provider>
   );

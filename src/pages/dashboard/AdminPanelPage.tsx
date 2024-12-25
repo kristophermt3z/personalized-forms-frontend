@@ -5,6 +5,8 @@ import {
   deleteUser,
 } from "../../services/adminService";
 import "./styles/AdminPanelPage.css";
+import { useAuth } from "../../context/AuthContext";
+import { jwtDecode } from "jwt-decode";
 
 interface User {
   _id: string;
@@ -15,6 +17,8 @@ interface User {
 }
 
 const AdminPanel: React.FC = () => {
+  const { refreshAuthState } = useAuth();
+
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
@@ -34,12 +38,18 @@ const AdminPanel: React.FC = () => {
   const handleToggleAdmin = async (userId: string, isAdmin: boolean) => {
     try {
       const token = localStorage.getItem("token") || "";
+      const decoded: { id: string } = jwtDecode(token);
+
       await updateUserStatus(token, userId, { admin: !isAdmin });
       setUsers((prevUsers) =>
         prevUsers.map((user) =>
           user._id === userId ? { ...user, admin: !isAdmin } : user
         )
       );
+
+      if (userId === decoded.id) {
+        refreshAuthState();
+      }
     } catch (error) {
       console.error("Error updating user admin status:", error);
     }
@@ -48,12 +58,18 @@ const AdminPanel: React.FC = () => {
   const handleToggleActive = async (userId: string, isActive: boolean) => {
     try {
       const token = localStorage.getItem("token") || "";
+      const decoded: { id: string } = jwtDecode(token);
+
       await updateUserStatus(token, userId, { active: !isActive });
       setUsers((prevUsers) =>
         prevUsers.map((user) =>
           user._id === userId ? { ...user, active: !isActive } : user
         )
       );
+
+      if (userId === decoded.id) {
+        refreshAuthState();
+      }
     } catch (error) {
       console.error("Error updating user active status:", error);
     }

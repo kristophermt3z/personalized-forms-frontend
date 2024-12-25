@@ -5,21 +5,35 @@ import AuthFormContainer from "../components/auth/AuthFormContainer";
 import { useAuth } from "../context/AuthContext";
 import Popup from "../components/Popup";
 import "./styles/Auth.css";
-
+import { jwtDecode } from "jwt-decode";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
-    const [popupMessage, setPopupMessage] = useState<string | null>(null);
+  const [popupMessage, setPopupMessage] = useState<string | null>(null);
 
-  const handleSubmit = async ({ email, password }: { email: string; password: string }) => {
+  const handleSubmit = async ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => {
     try {
       const response = await loginUser(email, password);
-      login(response.data.token);
+      const token = response.data.token;
+
+      const decoded: { active: boolean } = jwtDecode(token);
+      if (!decoded.active) {
+        setPopupMessage("Your account is blocked. Please contact support.");
+        return;
+      }
+
+      login(token);
       navigate("/");
-    } catch (error) {
+    } catch (error:any) {
       console.error("Login failed:", error);
-      setPopupMessage("Invalid credentials, please try again.");
+      setPopupMessage(error.response.data.message);
     }
   };
 
@@ -33,10 +47,7 @@ const Login: React.FC = () => {
         footerLink="/register"
       />
       {popupMessage && (
-        <Popup
-          message={popupMessage}
-          onClose={() => setPopupMessage(null)}
-        />
+        <Popup message={popupMessage} onClose={() => setPopupMessage(null)} />
       )}
     </div>
   );
