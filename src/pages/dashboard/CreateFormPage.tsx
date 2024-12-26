@@ -18,7 +18,7 @@ const CreateFormPage: React.FC = () => {
       const token = localStorage.getItem("token") || "";
       await createForm(formData, token);
       setPopupMessage("Form created successfully!");
-      setTimeout(() => navigate("/"), 2000); // Redirect after success
+      setTimeout(() => navigate("/profile-forms"), 2000); // Redirect after success
     } catch (error) {
       console.error("Error creating form:", error);
       setPopupMessage("Failed to create form. Please try again.");
