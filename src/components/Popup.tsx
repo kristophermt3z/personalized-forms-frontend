@@ -2,11 +2,12 @@ import React from "react";
 import "./styles/Popup.css";
 
 interface PopupProps {
-  message: string;
+  message: string
+  children?: React.ReactNode;
   onClose: () => void;
 }
 
-const Popup: React.FC<PopupProps> = ({ message, onClose }) => {
+const Popup: React.FC<PopupProps> = ({ message, children, onClose }) => {
   return (
     <div className="popup-overlay">
       <div className="popup-container">
@@ -14,9 +15,7 @@ const Popup: React.FC<PopupProps> = ({ message, onClose }) => {
           ×
         </button>
         <p className="popup-message">{message}</p>
-        <button className="popup-ok" onClick={onClose}>
-          OK
-        </button>
+        <div className="popup-content">{children}</div>
       </div>
     </div>
   );

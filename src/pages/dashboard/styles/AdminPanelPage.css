@@ -6,6 +6,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow-x: auto; /* Ensures horizontal scrolling on smaller screens */
+  width:90%;
 }
 
 .admin-panel-container h1 {
@@ -22,7 +23,7 @@
 .admin-panel-table th,
 .admin-panel-table td {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 10px;
   white-space: nowrap; /* Prevents text wrapping in cells */
 }
@@ -66,43 +67,10 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Buttons */
-button {
-  padding: 5px 10px;
+.settings-btn {
+  background: transparent;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: 5px;
-  min-width: 111px; /* Ensures consistent button width */
-  text-align: center; /* Centers the text inside the button */
-}
-
-.toggle-admin-btn {
-  background-color: #007bff;
-  color: white;
-}
-
-.toggle-admin-btn:hover {
-  background-color: #0056b3;
-}
-
-.toggle-active-btn {
-  background-color: #28a745;
-  color: white;
-}
-
-.toggle-active-btn:hover {
-  background-color: #218838;
-}
-
-.delete-user-btn {
-  background-color: #dc3545;
-  color: white;
-}
-
-.delete-user-btn:hover {
-  background-color: #bd2130;
 }
 
 /* Responsive adjustments */
@@ -114,20 +82,12 @@ button {
   .admin-panel-table {
     width: 90%; /* Table takes up 90% width */
     margin: 0 auto; /* Centers the table */
-  }
-
-  .admin-panel-table th,
-  .admin-panel-table td {
-    padding: 8px;
+    font-size: 10px;
   }
 
   .admin-panel-table td.name-cell,
   .admin-panel-table td.email-cell {
-    max-width: 100px; /* Adjusted max width for smaller screens */
-  }
-
-  button {
-    margin-bottom: 5px; /* Adds spacing between buttons vertically */
-    min-width: 111px;
+     /* Adjusted max width for smaller screens */
+     max-width: 50px;
   }
 }

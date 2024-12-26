@@ -16,6 +16,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 300px;
+  max-width: 90%;
   padding: 20px;
   text-align: center;
   position: relative;
@@ -33,22 +34,17 @@
 
 .popup-message {
   font-size: 15px;
-  margin-bottom: 15px;
+  margin: 15px 0;
   color: #333;
 }
 
-.popup-ok {
-  background-color: white;
-  color: #4caf50;
-  border: solid 1px #4caf50;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
+.popup-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+    align-items: stretch;
 }
 
-.popup-ok:hover {
-  background-color: #4caf50;
-  border: solid 1px #4caf50;
-  color: white;
-}
+
