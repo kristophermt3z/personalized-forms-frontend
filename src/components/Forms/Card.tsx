@@ -18,10 +18,11 @@ const Card: React.FC<CardProps> = ({
   onEdit,
   onDelete,
 }) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isAdmin } = useAuth();
   const [popupVisible, setPopupVisible] = useState(false);
 
   const openPopup = () => setPopupVisible(true);
+  const openAlert = () => alert('Hola');
   const closePopup = () => setPopupVisible(false);
 
   return (
@@ -30,12 +31,32 @@ const Card: React.FC<CardProps> = ({
       <p>{description}</p>
       {isAuthenticated && (
         <div className="card-actions">
+          {isAdmin && (
+            <button
+              className="settings-btn"
+              onClick={openPopup}
+              aria-label="Settings"
+            >
+              ⚙️
+            </button>
+          )}
           <button
             className="settings-btn"
-            onClick={openPopup}
+            onClick={openAlert}
             aria-label="Settings"
           >
-            ⚙️
+            📝
+          </button>
+        </div>
+      )}
+      {!isAuthenticated && (
+        <div className="card-actions">
+          <button
+            className="settings-btn"
+            onClick={openAlert}
+            aria-label="Settings"
+          >
+            🔎
           </button>
         </div>
       )}
