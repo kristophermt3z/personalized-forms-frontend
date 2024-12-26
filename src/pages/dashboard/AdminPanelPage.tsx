@@ -15,7 +15,7 @@ interface User {
 }
 
 const AdminPanel: React.FC = () => {
-  const { refreshAuthState } = useAuth();
+  const { refreshAuthState , logout } = useAuth();
   const [users, setUsers] = useState<User[]>([]);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [popupVisible, setPopupVisible] = useState(false);
@@ -85,8 +85,15 @@ const AdminPanel: React.FC = () => {
 
     try {
       const token = localStorage.getItem("token") || "";
+      const decoded: { id: string } = jwtDecode(token);
+
       await deleteUser(token, selectedUser._id);
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== selectedUser._id));
+
+      if (selectedUser._id === decoded.id) {
+        logout();
+      }
+
       closePopup();
     } catch (error) {
       console.error("Error deleting user:", error);
