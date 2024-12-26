@@ -28,7 +28,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <div className="card">
       <h3>{title}</h3>
-      <p>{description}</p>
+      <p className="card-description">{description}</p>
       {isAuthenticated && (
         <div className="card-actions">
           {isAdmin && (
