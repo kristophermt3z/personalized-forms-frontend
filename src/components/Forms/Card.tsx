@@ -8,6 +8,7 @@ import "./styles/Card.css";
 interface CardProps {
   title: string;
   description: string;
+  image?: string;
   onEdit: () => void;
   onDelete: () => void;
 }
@@ -15,6 +16,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({
   title,
   description,
+  image,
   onEdit,
   onDelete,
 }) => {
@@ -27,6 +29,7 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <div className="card">
+      {image && <img src={image} alt={title} className="card-image" />}
       <h3>{title}</h3>
       <p className="card-description">{description}</p>
       {isAuthenticated && (

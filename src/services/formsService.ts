@@ -18,7 +18,10 @@ export const fetchFormById = async (formId: string, token: string) => {
 
 export const createForm = async (formData: object, token: string) => {
   return api.post("/forms/create-form", formData, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
   });
 };
 
@@ -28,7 +31,10 @@ export const updateForm = async (
   token: string
 ) => {
   return api.put(`/forms/${formId}`, formData, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
   });
 };
 

@@ -9,11 +9,7 @@ const CreateFormPage: React.FC = () => {
   const navigate = useNavigate();
   const [popupMessage, setPopupMessage] = React.useState<string | null>(null);
 
-  const handleSubmit = async (formData: {
-    title: string;
-    description: string;
-    fields: any[];
-  }) => {
+  const handleSubmit = async (formData: FormData) => {
     try {
       const token = localStorage.getItem("token") || "";
       await createForm(formData, token);

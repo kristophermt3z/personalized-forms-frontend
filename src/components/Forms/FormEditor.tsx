@@ -1,4 +1,3 @@
-import { jwtDecode } from "jwt-decode";
 import React, { useState } from "react";
 import Button from "../Button";
 import "./styles/FormEditor.css";
@@ -14,12 +13,8 @@ interface FormEditorProps {
   initialTitle?: string;
   initialDescription?: string;
   initialFields?: FormField[];
-  onSubmit: (formData: {
-    title: string;
-    description: string;
-    fields: FormField[];
-    authorId: string;
-  }) => void;
+  onSubmit: (formData: FormData) => void;
+  initialImage?: string | null;
 }
 
 const FormEditor: React.FC<FormEditorProps> = ({
@@ -27,10 +22,22 @@ const FormEditor: React.FC<FormEditorProps> = ({
   initialDescription = "",
   initialFields = [],
   onSubmit,
+  initialImage = null,
 }) => {
   const [title, setTitle] = useState(initialTitle);
   const [description, setDescription] = useState(initialDescription);
   const [fields, setFields] = useState<FormField[]>(initialFields);
+  const [image, setImage] = useState<File | null>(null);
+  const [existingImage, setExistingImage] = useState<string | null>(
+    initialImage
+  );
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setImage(e.target.files[0]);
+      setExistingImage(null);
+    }
+  };
 
   const addField = () => {
     setFields([
@@ -63,12 +70,15 @@ const FormEditor: React.FC<FormEditorProps> = ({
       return;
     }
 
-    try {
-      const decoded: { id: string } = jwtDecode(token); // Extract `authorId` from token
-      onSubmit({ title, description, fields, authorId: decoded.id });
-    } catch (err) {
-      console.error("Error decoding token:", err);
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("fields", JSON.stringify(fields));
+    if (image) {
+      formData.append("image", image);
     }
+
+    onSubmit(formData);
   };
 
   return (
@@ -93,6 +103,18 @@ const FormEditor: React.FC<FormEditorProps> = ({
             onChange={(e) => setDescription(e.target.value)}
             required
           />
+        </div>
+
+        <div className="form-group">
+          <label>Image</label>
+          {existingImage && (
+            <img
+              src={existingImage}
+              alt="Existing"
+              className="form-image-preview"
+            />
+          )}
+          <input type="file" accept="image/*" name="image" onChange={handleImageChange} required />
         </div>
 
         <div className="form-fields">

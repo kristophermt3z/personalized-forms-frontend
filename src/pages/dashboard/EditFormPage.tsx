@@ -3,8 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import FormEditor from "../../components/Forms/FormEditor";
 import { fetchFormById, updateForm } from "../../services/formsService";
 import Popup from "../../components/Popup";
-import './styles/Create-EditeFromPage.css';
-
+import "./styles/Create-EditeFromPage.css";
 
 interface FormField {
   id: string;
@@ -19,6 +18,7 @@ const EditFormPage: React.FC = () => {
   const [formTitle, setFormTitle] = useState("");
   const [formDescription, setFormDescription] = useState("");
   const [formFields, setFormFields] = useState<FormField[]>([]);
+  const [existingImage, setExistingImage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [popupMessage, setPopupMessage] = useState<string | null>(null);
 
@@ -27,11 +27,12 @@ const EditFormPage: React.FC = () => {
       try {
         const token = localStorage.getItem("token") || "";
         const response = await fetchFormById(formId || "", token);
-        const { title, description, fields } = response.data;
+        const { title, description, fields, image  } = response.data;
 
         setFormTitle(title);
         setFormDescription(description);
         setFormFields(fields);
+        setExistingImage(image);
       } catch (error) {
         console.error("Error fetching form details:", error);
         setPopupMessage("Failed to load form. Please try again.");
@@ -45,11 +46,7 @@ const EditFormPage: React.FC = () => {
     }
   }, [formId]);
 
-  const handleSubmit = async (formData: {
-    title: string;
-    description: string;
-    fields: FormField[];
-  }) => {
+  const handleSubmit = async (formData: FormData) => {
     try {
       const token = localStorage.getItem("token") || "";
       await updateForm(formId || "", formData, token);
@@ -70,6 +67,7 @@ const EditFormPage: React.FC = () => {
         initialTitle={formTitle}
         initialDescription={formDescription}
         initialFields={formFields}
+        initialImage={existingImage}
         onSubmit={handleSubmit}
       />
       {popupMessage && (

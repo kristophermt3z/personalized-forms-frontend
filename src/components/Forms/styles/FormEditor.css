@@ -85,6 +85,17 @@
   transition: background-color 0.3s ease;
 }
 
+.form-image-preview {
+  display: block;
+  max-width: 100%;
+  max-height: 300px; /* Ajusta según el diseño */
+  margin: 10px auto;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  object-fit: cover; /* Asegura que la imagen se ajuste dentro del contenedor */
+}
+
 @media (max-width: 600px) {
   .form-editor-container {
     max-width: 90%;
