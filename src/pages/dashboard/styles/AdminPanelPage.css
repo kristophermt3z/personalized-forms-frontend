@@ -45,7 +45,7 @@
 .admin-panel-table td.name-cell,
 .admin-panel-table td.email-cell {
   position: relative;
-  max-width: 250px; /* Limit the visible width */
+  max-width: 250px; 
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
@@ -81,14 +81,13 @@
   }
 
   .admin-panel-table {
-    width: 90%; /* Table takes up 90% width */
-    margin: 0 auto; /* Centers the table */
+    width: 90%; 
+    margin: 0 auto; 
     font-size: 10px;
   }
 
   .admin-panel-table td.name-cell,
   .admin-panel-table td.email-cell {
-     /* Adjusted max width for smaller screens */
      max-width: 50px;
   }
 }

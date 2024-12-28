@@ -23,7 +23,6 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        {/* Layout with Particles */}
         <Route element={<ParticlesBackgroundLayout />}>
           <Route
             path="/login"

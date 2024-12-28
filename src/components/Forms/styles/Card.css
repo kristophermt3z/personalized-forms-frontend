@@ -6,12 +6,12 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-  text-align: center; /* Align text to center */
-  width: 100%; /* Full width within its grid cell */
-  max-width: 300px; /* Restrict maximum size */
-  margin: 0 auto; /* Center the card horizontally */
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  width: 100%; 
+  max-width: 300px; 
+  margin: 0 auto; 
 }
 
 .card-image {
@@ -36,7 +36,7 @@
 .card .card-actions {
   margin-top: 15px;
   display: flex;
-  gap: 10px; /* Space between buttons */
+  gap: 10px; 
 }
 
 .card .edit-btn,

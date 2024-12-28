@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../Button";
 import "./styles/FormEditor.css";
+import Popup from "../Popup";
 
 interface FormField {
   id: string;
@@ -31,10 +32,21 @@ const FormEditor: React.FC<FormEditorProps> = ({
   const [existingImage, setExistingImage] = useState<string | null>(
     initialImage
   );
+  const [popupMessage, setPopupMessage] = useState<string | null>(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setImage(e.target.files[0]);
+      const file = e.target.files[0];
+      const allowedFormats = ["jpg", "png", "jpeg", "webp"];
+      const fileExtension = file.name.split(".").pop()?.toLowerCase();
+      if (!fileExtension || !allowedFormats.includes(fileExtension)) {
+        setPopupMessage(
+          "Invalid file format. Allowed formats are: jpg, png, jpeg, webp."
+        );
+        e.target.value = "";
+        return;
+      }
+      setImage(file);
       setExistingImage(null);
     }
   };
@@ -67,6 +79,11 @@ const FormEditor: React.FC<FormEditorProps> = ({
     const token = localStorage.getItem("token");
     if (!token) {
       console.error("No token found.");
+      return;
+    }
+
+    if (fields.length === 0) {
+      setPopupMessage("The form must contain at least one question.");
       return;
     }
 
@@ -114,7 +131,13 @@ const FormEditor: React.FC<FormEditorProps> = ({
               className="form-image-preview"
             />
           )}
-          <input type="file" accept="image/*" name="image" onChange={handleImageChange} required />
+          <input
+            type="file"
+            accept="image/*"
+            name="image"
+            onChange={handleImageChange}
+            required
+          />
         </div>
 
         <div className="form-fields">
@@ -159,6 +182,9 @@ const FormEditor: React.FC<FormEditorProps> = ({
           />
         </div>
       </form>
+      {popupMessage && (
+        <Popup message={popupMessage} onClose={() => setPopupMessage(null)} />
+      )}
     </div>
   );
 };
