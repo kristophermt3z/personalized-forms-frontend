@@ -43,6 +43,7 @@ const GridForms: React.FC<GridFormsProps> = ({ forms, onUpdate }) => {
           onDelete={() => handleDelete(form._id)}
           onReply={() => alert("Reply clicked")}
           onViewResponses={() => alert("View Responses clicked")}
+          onViewTemplate={() => alert("View template")}
         />
       ))}
     </div>

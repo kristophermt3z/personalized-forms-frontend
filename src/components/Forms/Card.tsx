@@ -13,6 +13,7 @@ interface CardProps {
   onDelete: () => void;
   onReply: () => void;
   onViewResponses: () => void;
+  onViewTemplate: () => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -23,12 +24,12 @@ const Card: React.FC<CardProps> = ({
   onDelete,
   onReply,
   onViewResponses,
+  onViewTemplate,
 }) => {
   const { isAuthenticated } = useAuth();
   const [popupVisible, setPopupVisible] = useState(false);
 
   const openPopup = () => setPopupVisible(true);
-  const openAlert = () => alert("Hola");
   const closePopup = () => setPopupVisible(false);
 
   return (
@@ -53,7 +54,7 @@ const Card: React.FC<CardProps> = ({
           ) : (
             <button
               className="settings-btn"
-              onClick={openAlert}
+              onClick={onViewTemplate}
               aria-label="Settings"
             >
               🔎
