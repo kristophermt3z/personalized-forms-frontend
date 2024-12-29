@@ -11,6 +11,8 @@ interface CardProps {
   image?: string;
   onEdit: () => void;
   onDelete: () => void;
+  onReply: () => void;
+  onViewResponses: () => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -19,12 +21,14 @@ const Card: React.FC<CardProps> = ({
   image,
   onEdit,
   onDelete,
+  onReply,
+  onViewResponses,
 }) => {
-  const { isAuthenticated, isAdmin } = useAuth();
+  const { isAuthenticated } = useAuth();
   const [popupVisible, setPopupVisible] = useState(false);
 
   const openPopup = () => setPopupVisible(true);
-  const openAlert = () => alert('Hola');
+  const openAlert = () => alert("Hola");
   const closePopup = () => setPopupVisible(false);
 
   return (
@@ -34,18 +38,9 @@ const Card: React.FC<CardProps> = ({
       <p className="card-description">{description}</p>
       {isAuthenticated && (
         <div className="card-actions">
-          {isAdmin && (
-            <button
-              className="settings-btn"
-              onClick={openPopup}
-              aria-label="Settings"
-            >
-              ⚙️
-            </button>
-          )}
           <button
             className="settings-btn"
-            onClick={openAlert}
+            onClick={openPopup}
             aria-label="Settings"
           >
             📝
@@ -66,6 +61,20 @@ const Card: React.FC<CardProps> = ({
       {popupVisible && (
         <Popup message={`Actions for "${title}"`} onClose={closePopup}>
           <div className="popup-buttons">
+          <Button
+              label="Reply"
+              onClick={() => {
+                onReply();
+                closePopup();
+              }}
+            />
+            <Button
+              label="View Responses"
+              onClick={() => {
+                onViewResponses();
+                closePopup();
+              }}
+            />
             <Button
               label="Edit"
               onClick={() => {
