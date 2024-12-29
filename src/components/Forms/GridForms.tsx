@@ -41,9 +41,9 @@ const GridForms: React.FC<GridFormsProps> = ({ forms, onUpdate }) => {
           image={form.image}
           onEdit={() => navigate(`/edit-form/${form._id}`)}
           onDelete={() => handleDelete(form._id)}
-          onReply={() => alert("Reply clicked")}
+          onReply={() => navigate(`/reply-form/${form._id}`)}
           onViewResponses={() => alert("View Responses clicked")}
-          onViewTemplate={() => alert("View template")}
+          onViewTemplate={() => navigate(`/view-form/${form._id}`)}
         />
       ))}
     </div>

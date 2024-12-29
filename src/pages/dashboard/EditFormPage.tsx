@@ -25,8 +25,7 @@ const EditFormPage: React.FC = () => {
   useEffect(() => {
     const loadForm = async () => {
       try {
-        const token = localStorage.getItem("token") || "";
-        const response = await fetchFormById(formId || "", token);
+        const response = await fetchFormById(formId || "");
         const { title, description, fields, image  } = response.data;
 
         setFormTitle(title);

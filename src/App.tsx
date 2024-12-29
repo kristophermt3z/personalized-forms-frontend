@@ -18,6 +18,8 @@ import Contact from "./pages/Contact";
 import ProfileForms from "./pages/dashboard/ProfileForms";
 import AdminPanel from "./pages/dashboard/AdminPanelPage";
 import IsAdmin from "./routes/isAdmin";
+import ViewFormPage from "./pages/dashboard/ViewFormPage";
+import ReplyFormPage from "./pages/dashboard/ReplyFormPage";
 
 const App: React.FC = () => {
   return (
@@ -93,6 +95,26 @@ const App: React.FC = () => {
                 <>
                   <NavBar />
                   <EditFormPage />
+                </>
+              </IsAuthenticated>
+            }
+          />
+          <Route
+            path="/view-form/:formId"
+            element={
+              <>
+                <NavBar />
+                <ViewFormPage />
+              </>
+            }
+          />
+          <Route
+            path="/reply-form/:formId"
+            element={
+              <IsAuthenticated>
+                <>
+                  <NavBar />
+                  <ReplyFormPage />
                 </>
               </IsAuthenticated>
             }

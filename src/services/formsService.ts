@@ -10,10 +10,8 @@ export const fetchProfileForms = async (token: string) => {
   });
 };
 
-export const fetchFormById = async (formId: string, token: string) => {
-  return api.get(`/forms/${formId}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+export const fetchFormById = async (formId: string) => {
+  return api.get(`/forms/${formId}`);
 };
 
 export const createForm = async (formData: object, token: string) => {
