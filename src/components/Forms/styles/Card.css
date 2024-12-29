@@ -6,12 +6,13 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-items: center; 
-  text-align: center; 
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left; 
   width: 100%; 
   max-width: 300px; 
   margin: 0 auto; 
+  position: relative;
 }
 
 .card-image {
@@ -21,46 +22,88 @@
   border-radius: 8px 8px 0 0;
 }
 
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.card-text {
+  flex: 1;
+  text-align: left;
+}
+
 .card h3 {
   font-size: 18px;
   margin: 10px 0;
   color: #333;
+  max-width: 247px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+
 }
 
-.card .cart-description {
+.card h3:hover::after {
+  content: attr(data-title); 
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-description {
   font-size: 14px;
   color: #666;
   margin: 5px 0;
+  max-width: 247px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
 }
 
-.card .card-actions {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px; 
+.card .card-description:hover::after {
+  content: attr(data-description);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card .edit-btn,
-.card .delete-btn {
+.card-actions {
+  display: absolute;
+  bottom: 16px;
+  rigth: 16px;
+}
+
+.settings-btn {
   background-color: #18d4d6;
   color: white;
   border: none;
-  padding: 8px 12px;
+  padding: 0;
   font-size: 14px;
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  width: 70px;
 }
 
-.card .delete-btn {
-  background-color: #f44336;
-}
 
-.card .edit-btn:hover {
-  background-color: #0ebec0;
-}
-
-.card .delete-btn:hover {
-  background-color: #e53935;
+.settings-btn:hover {
+  background-color: #d1d1d1;
 }

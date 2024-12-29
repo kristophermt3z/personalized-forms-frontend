@@ -34,34 +34,37 @@ const Card: React.FC<CardProps> = ({
   return (
     <div className="card">
       {image && <img src={image} alt={title} className="card-image" />}
-      <h3>{title}</h3>
-      <p className="card-description">{description}</p>
-      {isAuthenticated && (
-        <div className="card-actions">
-          <button
-            className="settings-btn"
-            onClick={openPopup}
-            aria-label="Settings"
-          >
-            📝
-          </button>
+      <div className="card-content">
+        <div className="card-text">
+          <h3 data-title={title}>{title}</h3>
+          <p className="card-description" data-description={description}>
+            {description}
+          </p>
         </div>
-      )}
-      {!isAuthenticated && (
         <div className="card-actions">
-          <button
-            className="settings-btn"
-            onClick={openAlert}
-            aria-label="Settings"
-          >
-            🔎
-          </button>
+          {isAuthenticated ? (
+            <button
+              className="settings-btn"
+              onClick={openPopup}
+              aria-label="Settings"
+            >
+              📝
+            </button>
+          ) : (
+            <button
+              className="settings-btn"
+              onClick={openAlert}
+              aria-label="Settings"
+            >
+              🔎
+            </button>
+          )}
         </div>
-      )}
+      </div>
       {popupVisible && (
         <Popup message={`Actions for "${title}"`} onClose={closePopup}>
           <div className="popup-buttons">
-          <Button
+            <Button
               label="Reply"
               onClick={() => {
                 onReply();
