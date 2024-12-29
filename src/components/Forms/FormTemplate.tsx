@@ -53,6 +53,8 @@ const FormTemplate: React.FC<FormTemplateProps> = ({
     }
   };
 
+  if (!form) return <div>Loading form...</div>;
+
   return (
     <div className="form-template">
       <h2>{form.title}</h2>
