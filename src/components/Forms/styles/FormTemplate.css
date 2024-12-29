@@ -12,7 +12,7 @@
   margin-bottom: 20px;
 }
 
-.form-template p {
+.form-template .form-template-description {
   text-align: center;
   margin-bottom: 20px;
   color: #666;
@@ -49,7 +49,7 @@
   max-width: 100%;
   max-height: 300px;
   margin: 10px auto;
-  margin-bottom:30px;
+  margin-bottom: 30px;
   border-radius: 8px;
   border: 2px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -57,15 +57,26 @@
 }
 
 .form-template-loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 85vh;
-    font-size: 18px;
-    color: #666;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  font-size: 18px;
+  color: #666;
+}
 
+.read-only-warning {
+  text-align: center;
+  color: red;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.read-only-warning:hover {
+  color: darkred;
+}
 @media (max-width: 600px) {
   .form-template {
     max-width: 90%;

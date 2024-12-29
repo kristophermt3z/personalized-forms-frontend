@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { fetchFormById } from "../../services/formsService";
 import Button from "../Button";
 import "./styles/FormTemplate.css";
@@ -18,6 +20,7 @@ const FormTemplate: React.FC<FormTemplateProps> = ({
   const [responses, setResponses] = useState<
     { fieldId: string; answer: string }[]
   >([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadForm = async () => {
@@ -58,8 +61,16 @@ const FormTemplate: React.FC<FormTemplateProps> = ({
 
   return (
     <div className="form-template">
+        {readOnly && (
+        <p
+          className="read-only-warning"
+          onClick={() => navigate("/login")}
+        >
+          You are in read-only mode. Click here to login and submit your answers.
+        </p>
+      )}
       <h2>{form.title}</h2>
-      <p>{form.description}</p>
+      <p className="form-template-description">{form.description}</p>
       {form.image && (
         <img
           src={form.image}
