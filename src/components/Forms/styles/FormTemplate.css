@@ -55,6 +55,16 @@
   object-fit: cover;
 }
 
+.form-template-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    font-size: 18px;
+    color: #666;
+  }
+  
+
 @media (max-width: 600px) {
   .form-template {
     max-width: 90%;

@@ -53,14 +53,19 @@ const FormTemplate: React.FC<FormTemplateProps> = ({
     }
   };
 
-  if (!form) return <div>Loading form...</div>;
+  if (!form)
+    return <div className="form-template-loading">Loading form...</div>;
 
   return (
     <div className="form-template">
       <h2>{form.title}</h2>
       <p>{form.description}</p>
       {form.image && (
-        <img src={form.image} alt={form.title} className="form-template-image" />
+        <img
+          src={form.image}
+          alt={form.title}
+          className="form-template-image"
+        />
       )}
       <form onSubmit={handleSubmit}>
         {form.fields.map((field: any) => (
