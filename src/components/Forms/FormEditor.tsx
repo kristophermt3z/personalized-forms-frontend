@@ -136,7 +136,7 @@ const FormEditor: React.FC<FormEditorProps> = ({
             accept="image/*"
             name="image"
             onChange={handleImageChange}
-            required
+            required={!existingImage}
           />
         </div>
 
