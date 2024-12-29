@@ -57,7 +57,7 @@ const EditFormPage: React.FC = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="edit-form-loading">Loading...</div>;
 
   return (
     <div className="create-edit-from-page">
