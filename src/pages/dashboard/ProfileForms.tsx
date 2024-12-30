@@ -8,6 +8,9 @@ interface Form {
   _id: string;
   title: string;
   description: string;
+  authorId: {
+    name : string;
+  };
 }
 
 const ProfileForms: React.FC = () => {

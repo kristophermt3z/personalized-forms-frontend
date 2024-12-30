@@ -85,6 +85,30 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.card .card-author {
+  font-size: 0.9rem;
+  color: #555;
+  max-width: 247px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+.card .card-author:hover::after {
+  content: attr(data-description);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .card-actions {
   display: absolute;
   bottom: 16px;

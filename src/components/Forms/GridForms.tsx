@@ -8,6 +8,9 @@ interface Form {
   _id: string;
   title: string;
   description: string;
+  authorId: {
+    name : string;
+  };
   image?: string;
 }
 
@@ -38,6 +41,7 @@ const GridForms: React.FC<GridFormsProps> = ({ forms, onUpdate }) => {
           key={form._id}
           title={form.title}
           description={form.description}
+          authorId={form.authorId}
           image={form.image}
           onEdit={() => navigate(`/edit-form/${form._id}`)}
           onDelete={() => handleDelete(form._id)}

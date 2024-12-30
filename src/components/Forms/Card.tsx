@@ -8,6 +8,9 @@ import "./styles/Card.css";
 interface CardProps {
   title: string;
   description: string;
+  authorId: {
+    name : string;
+  };
   image?: string;
   onEdit: () => void;
   onDelete: () => void;
@@ -19,6 +22,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({
   title,
   description,
+  authorId,
   image,
   onEdit,
   onDelete,
@@ -40,6 +44,9 @@ const Card: React.FC<CardProps> = ({
           <h3 data-title={title}>{title}</h3>
           <p className="card-description" data-description={description}>
             {description}
+          </p>
+          <p className="card-author" data-author={authorId.name}>
+            👤 {authorId.name}
           </p>
         </div>
         <div className="card-actions">
