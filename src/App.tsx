@@ -20,6 +20,7 @@ import AdminPanel from "./pages/dashboard/AdminPanelPage";
 import IsAdmin from "./routes/isAdmin";
 import ViewFormPage from "./pages/dashboard/ViewFormPage";
 import ReplyFormPage from "./pages/dashboard/ReplyFormPage";
+import ViewResponsesPage from "./pages/dashboard/ViewResponsesPage";
 
 const App: React.FC = () => {
   return (
@@ -115,6 +116,17 @@ const App: React.FC = () => {
                 <>
                   <NavBar />
                   <ReplyFormPage />
+                </>
+              </IsAuthenticated>
+            }
+          />
+          <Route
+            path="/view-responses/:formId"
+            element={
+              <IsAuthenticated>
+                <>
+                  <NavBar />
+                  <ViewResponsesPage />
                 </>
               </IsAuthenticated>
             }

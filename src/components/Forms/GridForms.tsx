@@ -42,7 +42,7 @@ const GridForms: React.FC<GridFormsProps> = ({ forms, onUpdate }) => {
           onEdit={() => navigate(`/edit-form/${form._id}`)}
           onDelete={() => handleDelete(form._id)}
           onReply={() => navigate(`/reply-form/${form._id}`)}
-          onViewResponses={() => alert("View Responses clicked")}
+          onViewResponses={() => navigate(`/view-responses/${form._id}`)}
           onViewTemplate={() => navigate(`/view-form/${form._id}`)}
         />
       ))}
