@@ -21,6 +21,7 @@ import IsAdmin from "./routes/isAdmin";
 import ViewFormPage from "./pages/dashboard/ViewFormPage";
 import ReplyFormPage from "./pages/dashboard/ReplyFormPage";
 import ViewResponsesPage from "./pages/dashboard/ViewResponsesPage";
+import IsOwnerOrAdmin from "./routes/IsOwnerOrAdmin";
 
 const App: React.FC = () => {
   return (
@@ -93,10 +94,10 @@ const App: React.FC = () => {
             path="/edit-form/:formId"
             element={
               <IsAuthenticated>
-                <>
+                <IsOwnerOrAdmin>
                   <NavBar />
                   <EditFormPage />
-                </>
+                </IsOwnerOrAdmin>
               </IsAuthenticated>
             }
           />
@@ -124,10 +125,10 @@ const App: React.FC = () => {
             path="/view-responses/:formId"
             element={
               <IsAuthenticated>
-                <>
+                <IsOwnerOrAdmin>
                   <NavBar />
                   <ViewResponsesPage />
-                </>
+                </IsOwnerOrAdmin>
               </IsAuthenticated>
             }
           />

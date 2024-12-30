@@ -9,6 +9,7 @@ interface Form {
   title: string;
   description: string;
   authorId: {
+    _id: string;
     name : string;
   };
 }

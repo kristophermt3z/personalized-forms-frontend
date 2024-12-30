@@ -9,6 +9,7 @@ interface CardProps {
   title: string;
   description: string;
   authorId: {
+    _id: string;
     name : string;
   };
   image?: string;
@@ -30,11 +31,13 @@ const Card: React.FC<CardProps> = ({
   onViewResponses,
   onViewTemplate,
 }) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isAdmin, currentUserId } = useAuth();
   const [popupVisible, setPopupVisible] = useState(false);
 
   const openPopup = () => setPopupVisible(true);
   const closePopup = () => setPopupVisible(false);
+
+  const isCreator = currentUserId === authorId._id;
 
   return (
     <div className="card">
@@ -79,27 +82,31 @@ const Card: React.FC<CardProps> = ({
                 closePopup();
               }}
             />
-            <Button
-              label="View Responses"
-              onClick={() => {
-                onViewResponses();
-                closePopup();
-              }}
-            />
-            <Button
-              label="Edit"
-              onClick={() => {
-                onEdit();
-                closePopup();
-              }}
-            />
-            <Button
-              label="Delete"
-              onClick={() => {
-                onDelete();
-                closePopup();
-              }}
-            />
+            {(isAdmin || isCreator) && (
+              <>
+                <Button
+                  label="View Responses"
+                  onClick={() => {
+                    onViewResponses();
+                    closePopup();
+                  }}
+                />
+                <Button
+                  label="Edit"
+                  onClick={() => {
+                    onEdit();
+                    closePopup();
+                  }}
+                />
+                <Button
+                  label="Delete"
+                  onClick={() => {
+                    onDelete();
+                    closePopup();
+                  }}
+                />
+              </>
+            )}
           </div>
         </Popup>
       )}
