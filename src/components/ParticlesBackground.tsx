@@ -20,10 +20,6 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
     }).then(() => setInit(true));
   }, []);
 
-  const particlesLoaded = (container: any) => {
-    console.log("Particles Loaded:", container);
-  };
-
   const options = useMemo(
     () => ({
       background: {
@@ -69,7 +65,7 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
   );
 
   return (
-    <>{init && <Particles id="tsparticles" options={options} particlesLoaded={particlesLoaded} />}</>
+    <>{init && <Particles id="tsparticles" options={options} />}</>
   );
 };
 

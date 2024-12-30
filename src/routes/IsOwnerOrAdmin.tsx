@@ -22,6 +22,7 @@ const IsOwnerOrAdmin: React.FC<{ children: React.ReactNode }> = ({ children }) =
       }
     };
 
+
     if (formId) checkOwnership();
   }, [formId, isAdmin, currentUserId]);
 
