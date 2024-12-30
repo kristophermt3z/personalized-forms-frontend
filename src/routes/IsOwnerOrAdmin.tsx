@@ -8,19 +8,26 @@ const IsOwnerOrAdmin: React.FC<{ children: React.ReactNode }> = ({ children }) =
   const { formId } = useParams();
 
   const [isAllowed, setIsAllowed] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     const checkOwnership = async () => {
       try {
         const { data } = await fetchFormById(formId!);
         setIsAllowed(isAdmin || data.authorId._id === currentUserId);
-      } catch {
+    } catch {
         setIsAllowed(false);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     if (formId) checkOwnership();
   }, [formId, isAdmin, currentUserId]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (!isAllowed) {
     return <Navigate to="/" />;
