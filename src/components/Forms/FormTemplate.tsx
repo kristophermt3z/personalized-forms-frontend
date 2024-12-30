@@ -90,6 +90,14 @@ const FormTemplate: React.FC<FormTemplateProps> = ({
                 required={field.required}
               />
             )}
+            {field.type === "number" && (
+              <input
+                type="number"
+                disabled={readOnly}
+                onChange={(e) => handleChange(field.id, e.target.value)}
+                required={field.required}
+              />
+            )}
             {field.type === "checkbox" && (
               <input
                 type="checkbox"
