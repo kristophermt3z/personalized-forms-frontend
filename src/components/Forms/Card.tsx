@@ -63,7 +63,7 @@ const Card: React.FC<CardProps> = ({
         </div>
       </div>
       {popupVisible && (
-        <Popup message={`Actions for "${title}"`} onClose={closePopup}>
+        <Popup message={`"${title}"`} onClose={closePopup}>
           <div className="popup-buttons">
             <Button
               label="Reply"
