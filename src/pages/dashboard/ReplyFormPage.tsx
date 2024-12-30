@@ -18,7 +18,7 @@ const ReplyFormPage: React.FC = () => {
       const token = localStorage.getItem("token") || "";
       await submitReply({ formId, responses }, token);
       setPopupMessage("Reply submitted successfully!");
-      setTimeout(() => navigate("/profile-forms"), 2000);
+      setTimeout(() => navigate("/"), 2000);
     } catch (error) {
       console.error("Error submitting reply:", error);
       setPopupMessage("Failed to submit reply. Please try again.");
