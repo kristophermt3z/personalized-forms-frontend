@@ -61,12 +61,10 @@ const FormTemplate: React.FC<FormTemplateProps> = ({
 
   return (
     <div className="form-template">
-        {readOnly && (
-        <p
-          className="read-only-warning"
-          onClick={() => navigate("/login")}
-        >
-          You are in read-only mode. Click here to login and submit your answers.
+      {readOnly && (
+        <p className="read-only-warning" onClick={() => navigate("/login")}>
+          You are in read-only mode. Click here to login and submit your
+          answers.
         </p>
       )}
       <h2>{form.title}</h2>
@@ -99,13 +97,22 @@ const FormTemplate: React.FC<FormTemplateProps> = ({
               />
             )}
             {field.type === "checkbox" && (
-              <input
-                type="checkbox"
-                disabled={readOnly}
-                onChange={(e) =>
-                  handleChange(field.id, e.target.checked ? "true" : "false")
-                }
-              />
+              <div className="checkbox-container">
+                <label>
+                  <input
+                    type="checkbox"
+                    disabled={readOnly}
+                    onChange={(e) =>
+                      handleChange(
+                        field.id,
+                        e.target.checked ? "true" : "false"
+                      )
+                    }
+                  />
+                  Yes
+                </label>
+                <span>(Unselected = No)</span>
+              </div>
             )}
           </div>
         ))}
