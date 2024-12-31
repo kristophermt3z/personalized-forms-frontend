@@ -41,20 +41,30 @@ const ViewResponsesPage: React.FC = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Date Submitted</th>
+            <th>View Answer</th>
           </tr>
         </thead>
         <tbody>
           {replies.length > 0 ? (
             replies.map((reply) => (
               <tr key={reply._id}>
-                <td>{reply.userId.name}</td>
-                <td>{reply.userId.email}</td>
+                <td className="name-cell" data-name={reply.userId.name}>
+                  {reply.userId.name}
+                </td>
+                <td className="email-cell" data-email={reply.userId.email}>
+                  {reply.userId.email}
+                </td>
                 <td>{new Date(reply.createdAt).toLocaleString()}</td>
+                <td>
+                  <button className="view-answer-btn" aria-label="View Answer">
+                    🔍
+                  </button>
+                </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={3}>No responses found.</td>
+              <td colSpan={4}>No responses found.</td>
             </tr>
           )}
         </tbody>
