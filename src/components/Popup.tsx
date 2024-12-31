@@ -14,7 +14,7 @@ const Popup: React.FC<PopupProps> = ({ message, children, onClose }) => {
         <button className="popup-close" onClick={onClose}>
           ×
         </button>
-        <p className="popup-message">{message}</p>
+        <p className="popup-message" data-tooltip={message}>{message}</p>
         <div className="popup-content">{children}</div>
       </div>
     </div>

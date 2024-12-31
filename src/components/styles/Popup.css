@@ -36,7 +36,27 @@
   font-size: 15px;
   margin: 15px 0;
   color: #333;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  max-width: 100%; 
 }
+
+.popup-message:hover::after {
+  content: attr(data-tooltip); /* Displays full message on hover */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 
 .popup-buttons {
   display: flex;
